@@ -6,7 +6,6 @@ import { UserInput } from './inputs/user.input';
 import { LoginInput } from './inputs/login.input';
 import { AuthGuard, User } from './users.decorators';
 import { genSalt, hash, compare } from 'bcrypt';
-import { sign } from 'jsonwebtoken';
 import { Res, UseGuards } from '@nestjs/common';
 import { UserDocument } from './interfaces/user.interface';
 import { createTokens } from './users.utils';

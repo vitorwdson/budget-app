@@ -9,13 +9,21 @@ type UserType {
   email: String!
 }
 
+type BudgetType {
+  id: ID!
+  name: String!
+  maxValue: Float!
+}
+
 type Query {
   user: UserType!
+  budgets: [BudgetType!]!
 }
 
 type Mutation {
   createUser(input: UserInput!): UserType!
   login(input: LoginInput!): UserType!
+  createBudget(input: BudgetInput!): BudgetType!
 }
 
 input UserInput {
@@ -28,4 +36,9 @@ input UserInput {
 input LoginInput {
   email: String!
   password: String!
+}
+
+input BudgetInput {
+  name: String!
+  maxValue: Float!
 }
