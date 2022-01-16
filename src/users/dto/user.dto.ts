@@ -10,6 +10,4 @@ export class UserType {
   readonly lastName: string;
   @Field()
   readonly email: string;
-  @Field()
-  readonly password: string;
 }

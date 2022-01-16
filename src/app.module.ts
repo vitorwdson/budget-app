@@ -14,6 +14,7 @@ import { UsersModule } from './users/users.module';
     MongooseModule.forRoot(process.env.MONGODB_CONNECTION_STRING),
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql',
+      context: ({ res }) => res,
     }),
   ],
   controllers: [AppController],
