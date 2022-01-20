@@ -6,11 +6,13 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { BudgetsModule } from './budgets/budgets.module';
+import { ExpensesModule } from './expenses/expenses.module';
 
 @Module({
   imports: [
     UsersModule,
     BudgetsModule,
+    ExpensesModule,
 
     ConfigModule.forRoot(),
     MongooseModule.forRoot(process.env.MONGODB_CONNECTION_STRING),

@@ -15,15 +15,23 @@ type BudgetType {
   maxValue: Float!
 }
 
+type ExpenseType {
+  id: ID!
+  name: String!
+  value: Float!
+}
+
 type Query {
   user: UserType!
   budgets: [BudgetType!]!
+  expenses(budgetId: String!): [ExpenseType!]!
 }
 
 type Mutation {
   createUser(input: UserInput!): UserType!
   login(input: LoginInput!): UserType!
   createBudget(input: BudgetInput!): BudgetType!
+  createExpense(input: ExpenseInput!): ExpenseType!
 }
 
 input UserInput {
@@ -41,4 +49,10 @@ input LoginInput {
 input BudgetInput {
   name: String!
   maxValue: Float!
+}
+
+input ExpenseInput {
+  name: String!
+  value: Float!
+  budgetId: String!
 }
