@@ -13,6 +13,7 @@ type BudgetType {
   id: ID!
   name: String!
   maxValue: Float!
+  currentValue: Float!
 }
 
 type ExpenseType {

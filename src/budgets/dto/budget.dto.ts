@@ -8,4 +8,6 @@ export class BudgetType {
   readonly name: string;
   @Field(() => Float)
   readonly maxValue: number;
+  @Field(() => Float)
+  readonly currentValue: number;
 }

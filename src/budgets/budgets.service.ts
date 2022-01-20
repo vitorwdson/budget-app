@@ -4,6 +4,8 @@ import { InjectModel } from '@nestjs/mongoose';
 import { BudgetDocument } from './interfaces/budget.interface';
 import { UserDocument } from '../users/interfaces/user.interface';
 import { BudgetInput } from './inputs/budget.input';
+import { BudgetType } from './dto/budget.dto';
+import { ExpensesService } from 'src/expenses/expenses.service';
 
 @Injectable()
 export class BudgetsService {
@@ -19,7 +21,25 @@ export class BudgetsService {
     return await newBudget.save();
   }
 
-  async findAll(user: UserDocument): Promise<BudgetDocument[]> {
-    return await this.budgetModel.find({ userId: user.id });
+  async findAll(
+    user: UserDocument,
+    expensesService: ExpensesService,
+  ): Promise<BudgetType[]> {
+    const budgets = await this.budgetModel.find({ userId: user.id });
+
+    return await Promise.all(
+      budgets.map(async (budget) => {
+        const expenses = await expensesService.findAll(budget.id);
+        const currentValue = expenses.reduce((acc, e) => acc + e.value, 0);
+        const roundedCurrentValue = parseFloat(currentValue.toFixed(2));
+
+        return {
+          id: budget.id,
+          name: budget.name,
+          maxValue: budget.maxValue,
+          currentValue: roundedCurrentValue,
+        };
+      }),
+    );
   }
 }

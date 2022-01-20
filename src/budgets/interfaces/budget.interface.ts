@@ -1,7 +1,8 @@
-import { Document, Schema } from 'mongoose';
+import { Document } from 'mongoose';
 
 export interface BudgetDocument extends Document {
+  readonly id: string;
   readonly name: string;
-  readonly maxValue: string;
-  readonly userId: Schema.Types.ObjectId;
+  readonly maxValue: number;
+  readonly userId: string;
 }

@@ -1,5 +1,6 @@
 import { UseGuards } from '@nestjs/common';
 import { Mutation, Query, Resolver, Args } from '@nestjs/graphql';
+import { ExpensesService } from 'src/expenses/expenses.service';
 import { UsersService } from 'src/users/users.service';
 import { UserDocument } from '../users/interfaces/user.interface';
 import { AuthGuard, User } from '../users/users.decorators';
@@ -12,12 +13,13 @@ export class BudgetsResolver {
   constructor(
     private readonly budgetsService: BudgetsService,
     private readonly usersService: UsersService,
+    private readonly expensesService: ExpensesService,
   ) {}
 
   @UseGuards(AuthGuard)
   @Query(() => [BudgetType])
   async budgets(@User() user: UserDocument) {
-    return this.budgetsService.findAll(user);
+    return this.budgetsService.findAll(user, this.expensesService);
   }
 
   @UseGuards(AuthGuard)
