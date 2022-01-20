@@ -15,15 +15,11 @@ export class BudgetsService {
     user: UserDocument,
     budget: BudgetInput,
   ): Promise<BudgetDocument> {
-    const newBudget = new this.budgetModel(budget);
-
-    user.budgets.push(newBudget);
-    user.save();
-
-    return newBudget;
+    const newBudget = new this.budgetModel({ ...budget, userId: user.id });
+    return await newBudget.save();
   }
 
   async findAll(user: UserDocument): Promise<BudgetDocument[]> {
-    return user.budgets;
+    return await this.budgetModel.find({ userId: user.id });
   }
 }
