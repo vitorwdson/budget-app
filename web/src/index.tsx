@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Router from './pages';
 
 ReactDOM.render(
   <React.StrictMode>
-    <h1>Hello World</h1>
+    <Router />
   </React.StrictMode>,
   document.getElementById('root')
 );
