@@ -19,6 +19,10 @@ import { ExpensesModule } from './expenses/expenses.module';
     GraphQLModule.forRoot({
       autoSchemaFile: 'schema.gql',
       context: ({ res }) => res,
+      cors: {
+        origin: 'http://localhost:3001',
+        credentials: true,
+      },
     }),
   ],
   controllers: [AppController],
