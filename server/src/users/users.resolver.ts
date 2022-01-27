@@ -21,16 +21,30 @@ export class UsersResolver {
   }
 
   @Mutation(() => UserType)
-  async createUser(@Args('input') input: UserInput) {
+  async createUser(
+    @Args('input') input: UserInput,
+    @Res({ passthrough: true }) response: Response,
+  ) {
     const { password } = input;
 
     const salt = await genSalt(10);
     const hashedPassword = await hash(password, salt);
 
-    return this.usersService.create({
+    const user = await this.usersService.create({
       ...input,
       password: hashedPassword,
     });
+
+    const [accessToken, refreshToken] = createTokens(user);
+
+    response.cookie('access-token', accessToken, {
+      maxAge: 1000 * 60 * 1,
+    });
+    response.cookie('refresh-token', refreshToken, {
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+    });
+
+    return user;
   }
 
   @Mutation(() => UserType)
