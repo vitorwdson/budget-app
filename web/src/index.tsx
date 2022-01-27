@@ -2,10 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Router from './pages';
+import { createClient, Provider } from 'urql';
+
+const client = createClient({
+  url: 'http://localhost:3000/graphql',
+  fetchOptions: {
+    credentials: 'include'
+  }
+});
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Router />
-  </React.StrictMode>,
+  <Provider value={client}>
+    <React.StrictMode>
+      <Router />
+    </React.StrictMode>
+  </Provider>,
   document.getElementById('root')
 );
