@@ -8,6 +8,10 @@ import { verify } from 'jsonwebtoken';
 import { UsersService } from './users.service';
 import { refreshAccessTokens } from './users.utils';
 
+type PayloadType = {
+  userId: any;
+};
+
 export const User = createParamDecorator(
   (data: unknown, context: ExecutionContext) => {
     const {
@@ -28,7 +32,10 @@ export class AuthGuard implements CanActivate {
 
     try {
       const accessToken = request.cookies['access-token'];
-      const { userId } = verify(accessToken, process.env.ACCESS_TOKEN_SECRET);
+      const { userId } = verify(
+        accessToken,
+        process.env.ACCESS_TOKEN_SECRET,
+      ) as PayloadType;
 
       request.user = this.usersService.getUserByID(userId);
     } catch (err) {
