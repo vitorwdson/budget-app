@@ -1616,15 +1616,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mongoose@npm:^5.11.97":
-  version: 5.11.97
-  resolution: "@types/mongoose@npm:5.11.97"
-  dependencies:
-    mongoose: "*"
-  checksum: 54c896814a92898535eb8965f90308f2661b75f4a53e28405802fbe9f90ba7d37140f151b1e291e08555a1700d3486911104c108ed02a94c6feddeab6bd3bfea
-  languageName: node
-  linkType: hard
-
 "@types/node@npm:*, @types/node@npm:< 17.0.6, @types/node@npm:^16.11.1":
   version: 16.11.1
   resolution: "@types/node@npm:16.11.1"
@@ -2728,7 +2719,6 @@ __metadata:
     "@types/express": ^4.17.13
     "@types/jest": ^27.0.2
     "@types/jsonwebtoken": ^8.5.7
-    "@types/mongoose": ^5.11.97
     "@types/node": ^16.11.1
     "@types/supertest": ^2.0.11
     "@typescript-eslint/eslint-plugin": ^4.29.2
@@ -6180,7 +6170,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mongoose@npm:*, mongoose@npm:^6.1.6":
+"mongoose@npm:^6.1.6":
   version: 6.1.10
   resolution: "mongoose@npm:6.1.10"
   dependencies:
