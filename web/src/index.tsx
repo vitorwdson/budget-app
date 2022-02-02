@@ -5,7 +5,7 @@ import Router from './pages';
 import { createClient, Provider } from 'urql';
 
 const client = createClient({
-  url: 'http://localhost:3000/graphql',
+  url: 'http://localhost:4000/graphql',
   fetchOptions: {
     credentials: 'include'
   }
