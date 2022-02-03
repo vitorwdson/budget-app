@@ -2748,6 +2748,7 @@ __metadata:
     tsconfig-paths: ^3.11.0
     type-graphql: ^1.1.1
     typescript: ^4.4.4
+    validate.js: ^0.13.1
   languageName: unknown
   linkType: soft
 
@@ -8223,6 +8224,13 @@ __metadata:
     convert-source-map: ^1.6.0
     source-map: ^0.7.3
   checksum: c7dabf9567e0c210b24d0720e553803cbe1ff81edb1ec7f2080eb4be01ed081a40286cc9f4aaa86d1bf8d57840cefae8fdf326b7cb8faa316ba50c7b948030d4
+  languageName: node
+  linkType: hard
+
+"validate.js@npm:^0.13.1":
+  version: 0.13.1
+  resolution: "validate.js@npm:0.13.1"
+  checksum: a3ddc8744bf1e97afeef6129083e5a4f6c3378a82927c94effa4ec9954ff0cc3a9155c3894101b781f20b6256dde1010b69a96145e0bfb2229da3a8b7bd331a6
   languageName: node
   linkType: hard
 

@@ -16,8 +16,14 @@ export class UsersService {
     return this.userModel.findOne({ email }).exec();
   }
 
-  async create(createUserDto: UserInput): Promise<UserDocument> {
-    const createdUser = new this.userModel(createUserDto);
-    return createdUser.save();
+  async create(
+    userData: UserInput,
+  ): Promise<[UserDocument | null, number | null]> {
+    try {
+      const createdUser = new this.userModel(userData);
+      return [await createdUser.save(), null];
+    } catch (err) {
+      return [null, err.code];
+    }
   }
 }

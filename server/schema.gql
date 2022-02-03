@@ -2,11 +2,21 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type ErrorType {
+  field: String!
+  message: String!
+}
+
 type UserType {
   id: ID!
   firstName: String!
   lastName: String!
   email: String!
+}
+
+type UserResponse {
+  errors: [ErrorType!]
+  user: UserType
 }
 
 type BudgetType {
@@ -29,8 +39,8 @@ type Query {
 }
 
 type Mutation {
-  createUser(input: UserInput!): UserType!
-  login(input: LoginInput!): UserType!
+  createUser(input: UserInput!): UserResponse!
+  login(input: LoginInput!): UserResponse!
   createBudget(input: BudgetInput!): BudgetType!
   createExpense(input: ExpenseInput!): ExpenseType!
 }
