@@ -1,11 +1,13 @@
 import { UseGuards } from '@nestjs/common';
 import { Mutation, Query, Resolver, Args } from '@nestjs/graphql';
-import { ExpensesService } from 'src/expenses/expenses.service';
-import { UsersService } from 'src/users/users.service';
+import { ExpensesService } from '../expenses/expenses.service';
+import { UsersService } from '../users/users.service';
+import { formatValidationErrors } from '../utils/validation';
 import { UserDocument } from '../users/interfaces/user.interface';
 import { AuthGuard, User } from '../users/users.decorators';
 import { BudgetsService } from './budgets.service';
-import { BudgetType } from './dto/budget.dto';
+import { validateBudgetData } from './budgets.validators';
+import { BudgetType, BudgetResponse } from './dto/budget.dto';
 import { BudgetInput } from './inputs/budget.input';
 
 @Resolver()
@@ -23,11 +25,27 @@ export class BudgetsResolver {
   }
 
   @UseGuards(AuthGuard)
-  @Mutation(() => BudgetType)
+  @Mutation(() => BudgetResponse)
   async createBudget(
     @User() user: UserDocument,
     @Args('input') input: BudgetInput,
   ) {
-    return this.budgetsService.create(user, input);
+    const validation = validateBudgetData(input);
+
+    if (validation != null) {
+      const errors = formatValidationErrors(validation);
+
+      return {
+        errors,
+        user: null,
+      };
+    }
+
+    const budget = await this.budgetsService.create(user, input);
+
+    return {
+      errors: null,
+      budget,
+    };
   }
 }

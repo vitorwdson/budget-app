@@ -5,7 +5,7 @@ import { BudgetDocument } from './interfaces/budget.interface';
 import { UserDocument } from '../users/interfaces/user.interface';
 import { BudgetInput } from './inputs/budget.input';
 import { BudgetType } from './dto/budget.dto';
-import { ExpensesService } from 'src/expenses/expenses.service';
+import { ExpensesService } from '../expenses/expenses.service';
 
 @Injectable()
 export class BudgetsService {

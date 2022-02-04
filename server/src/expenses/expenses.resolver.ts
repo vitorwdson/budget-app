@@ -1,6 +1,6 @@
 import { UseGuards } from '@nestjs/common';
 import { Mutation, Query, Resolver, Args } from '@nestjs/graphql';
-import { UsersService } from 'src/users/users.service';
+import { UsersService } from '../users/users.service';
 import { AuthGuard } from '../users/users.decorators';
 import { ExpensesService } from './expenses.service';
 import { ExpenseType } from './dto/expense.dto';

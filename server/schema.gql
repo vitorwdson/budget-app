@@ -26,6 +26,11 @@ type BudgetType {
   currentValue: Float!
 }
 
+type BudgetResponse {
+  errors: [ErrorType!]
+  budget: BudgetType
+}
+
 type ExpenseType {
   id: ID!
   name: String!
@@ -41,7 +46,7 @@ type Query {
 type Mutation {
   createUser(input: UserInput!): UserResponse!
   login(input: LoginInput!): UserResponse!
-  createBudget(input: BudgetInput!): BudgetType!
+  createBudget(input: BudgetInput!): BudgetResponse!
   createExpense(input: ExpenseInput!): ExpenseType!
 }
 

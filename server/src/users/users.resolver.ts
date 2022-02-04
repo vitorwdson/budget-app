@@ -10,6 +10,7 @@ import { Res, UseGuards } from '@nestjs/common';
 import { UserDocument } from './interfaces/user.interface';
 import { createTokens } from './users.utils';
 import { validateUserData, passwordTester } from './users.validators';
+import { formatValidationErrors } from '../utils/validation';
 
 @Resolver()
 export class UsersResolver {
@@ -29,14 +30,7 @@ export class UsersResolver {
     const validation = validateUserData(input);
 
     if (validation != null) {
-      const errors = [];
-
-      for (const field in validation) {
-        errors.push({
-          field,
-          message: validation[field][0],
-        });
-      }
+      const errors = formatValidationErrors(validation);
 
       return {
         errors,
