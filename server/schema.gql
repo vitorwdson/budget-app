@@ -37,6 +37,11 @@ type ExpenseType {
   value: Float!
 }
 
+type ExpenseResponse {
+  errors: [ErrorType!]
+  expense: ExpenseType
+}
+
 type Query {
   user: UserType!
   budgets: [BudgetType!]!
@@ -47,7 +52,7 @@ type Mutation {
   createUser(input: UserInput!): UserResponse!
   login(input: LoginInput!): UserResponse!
   createBudget(input: BudgetInput!): BudgetResponse!
-  createExpense(input: ExpenseInput!): ExpenseType!
+  createExpense(input: ExpenseInput!): ExpenseResponse!
 }
 
 input UserInput {
