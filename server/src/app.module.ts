@@ -20,7 +20,7 @@ import { ExpensesModule } from './expenses/expenses.module';
       autoSchemaFile: 'schema.gql',
       context: ({ res }) => res,
       cors: {
-        origin: 'http://localhost:3001',
+        origin: 'http://localhost:3000',
         credentials: true,
       },
     }),
