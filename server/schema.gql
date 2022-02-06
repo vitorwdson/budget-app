@@ -42,10 +42,15 @@ type ExpenseResponse {
   expense: ExpenseType
 }
 
+type ExpensesResponse {
+  errors: [ErrorType!]
+  expenses: [ExpenseType!]
+}
+
 type Query {
   user: UserType!
   budgets: [BudgetType!]!
-  expenses(budgetId: String!): [ExpenseType!]!
+  expenses(budgetId: String!): ExpensesResponse!
 }
 
 type Mutation {

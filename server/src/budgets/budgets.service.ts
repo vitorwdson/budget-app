@@ -21,6 +21,13 @@ export class BudgetsService {
     return await newBudget.save();
   }
 
+  async belongsToUser(budgetId: string, user: UserDocument): Promise<boolean> {
+    const budget = await this.budgetModel.findById(budgetId);
+    const userId = budget.userId.toString();
+
+    return userId === user.id;
+  }
+
   async findAll(
     user: UserDocument,
     expensesService: ExpensesService,

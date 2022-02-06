@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { forwardRef, Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { BudgetSchema } from './budgets.schema';
 import { BudgetsResolver } from './budgets.resolver';
@@ -10,7 +10,7 @@ import { ExpensesModule } from '../expenses/expenses.module';
   imports: [
     MongooseModule.forFeature([{ name: 'Budget', schema: BudgetSchema }]),
     UsersModule,
-    ExpensesModule,
+    forwardRef(() => ExpensesModule),
   ],
   providers: [BudgetsResolver, BudgetsService],
   exports: [BudgetsService],
