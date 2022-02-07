@@ -1,0 +1,13 @@
+query Expenses($budgetId: String!) {
+  expenses(budgetId: $budgetId) {
+    errors {
+      field
+      message
+    }
+    expenses {
+      id
+      name
+      value
+    }
+  }
+}

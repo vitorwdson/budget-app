@@ -1,0 +1,23 @@
+mutation CreateExpense(
+    $name: String!
+    $value: Float!
+    $budgetId: String!
+  ) {
+  createExpense(
+    input: {
+      name: $name
+      value: $value
+      budgetId: $budgetId
+    }
+  ) {
+    errors {
+      field
+      message
+    }
+    expense {
+      id
+      name
+      value
+    }
+  }
+}
