@@ -47,6 +47,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint", "npm:8.8.0"],
             ["eslint-plugin-react", "virtual:5f667c73984ed00ed0af2d2ee5bb7487501bcb7981faa0f3174f6b4e10779d128272858d90e1bd616db7bd20b70e6922af9582ba35aeace0a368e003ee8b65c2#npm:7.28.0"],
             ["graphql", "npm:16.3.0"],
+            ["graphql-tag", "virtual:5f667c73984ed00ed0af2d2ee5bb7487501bcb7981faa0f3174f6b4e10779d128272858d90e1bd616db7bd20b70e6922af9582ba35aeace0a368e003ee8b65c2#npm:2.12.6"],
             ["react", "npm:17.0.2"],
             ["react-dom", "virtual:5f667c73984ed00ed0af2d2ee5bb7487501bcb7981faa0f3174f6b4e10779d128272858d90e1bd616db7bd20b70e6922af9582ba35aeace0a368e003ee8b65c2#npm:17.0.2"],
             ["react-router-dom", "virtual:5f667c73984ed00ed0af2d2ee5bb7487501bcb7981faa0f3174f6b4e10779d128272858d90e1bd616db7bd20b70e6922af9582ba35aeace0a368e003ee8b65c2#npm:6.2.1"],
@@ -1393,7 +1394,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/graphql-tag", null],
             ["auto-bind", "npm:4.0.0"],
             ["graphql", "npm:16.3.0"],
-            ["graphql-tag", null],
+            ["graphql-tag", "virtual:5f667c73984ed00ed0af2d2ee5bb7487501bcb7981faa0f3174f6b4e10779d128272858d90e1bd616db7bd20b70e6922af9582ba35aeace0a368e003ee8b65c2#npm:2.12.6"],
             ["tslib", "npm:2.3.1"]
           ],
           "packagePeers": [
@@ -1426,7 +1427,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["change-case-all", "npm:1.0.14"],
             ["dependency-graph", "npm:0.11.0"],
             ["graphql", "npm:16.3.0"],
-            ["graphql-tag", "virtual:9c729ce1c13ceadc63ae2a74241972bb0b3fc5a9b4d56f7620a482caaa90e49fe0f864e7d00984f7a2368aca37459a873cd71156e880cda8da6837c41a3e98a6#npm:2.12.6"],
+            ["graphql-tag", "virtual:5f667c73984ed00ed0af2d2ee5bb7487501bcb7981faa0f3174f6b4e10779d128272858d90e1bd616db7bd20b70e6922af9582ba35aeace0a368e003ee8b65c2#npm:2.12.6"],
             ["parse-filepath", "npm:1.0.2"],
             ["tslib", "npm:2.3.1"]
           ],
@@ -4964,10 +4965,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "SOFT",
         }],
-        ["virtual:9c729ce1c13ceadc63ae2a74241972bb0b3fc5a9b4d56f7620a482caaa90e49fe0f864e7d00984f7a2368aca37459a873cd71156e880cda8da6837c41a3e98a6#npm:2.12.6", {
-          "packageLocation": "./.yarn/__virtual__/graphql-tag-virtual-179a5d6b8c/0/cache/graphql-tag-npm-2.12.6-99a5a7f6de-b15162a3d6.zip/node_modules/graphql-tag/",
+        ["virtual:5f667c73984ed00ed0af2d2ee5bb7487501bcb7981faa0f3174f6b4e10779d128272858d90e1bd616db7bd20b70e6922af9582ba35aeace0a368e003ee8b65c2#npm:2.12.6", {
+          "packageLocation": "./.yarn/__virtual__/graphql-tag-virtual-2d80ac5d9b/0/cache/graphql-tag-npm-2.12.6-99a5a7f6de-b15162a3d6.zip/node_modules/graphql-tag/",
           "packageDependencies": [
-            ["graphql-tag", "virtual:9c729ce1c13ceadc63ae2a74241972bb0b3fc5a9b4d56f7620a482caaa90e49fe0f864e7d00984f7a2368aca37459a873cd71156e880cda8da6837c41a3e98a6#npm:2.12.6"],
+            ["graphql-tag", "virtual:5f667c73984ed00ed0af2d2ee5bb7487501bcb7981faa0f3174f6b4e10779d128272858d90e1bd616db7bd20b70e6922af9582ba35aeace0a368e003ee8b65c2#npm:2.12.6"],
             ["@types/graphql", null],
             ["graphql", "npm:16.3.0"],
             ["tslib", "npm:2.3.1"]
@@ -8549,6 +8550,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint", "npm:8.8.0"],
             ["eslint-plugin-react", "virtual:5f667c73984ed00ed0af2d2ee5bb7487501bcb7981faa0f3174f6b4e10779d128272858d90e1bd616db7bd20b70e6922af9582ba35aeace0a368e003ee8b65c2#npm:7.28.0"],
             ["graphql", "npm:16.3.0"],
+            ["graphql-tag", "virtual:5f667c73984ed00ed0af2d2ee5bb7487501bcb7981faa0f3174f6b4e10779d128272858d90e1bd616db7bd20b70e6922af9582ba35aeace0a368e003ee8b65c2#npm:2.12.6"],
             ["react", "npm:17.0.2"],
             ["react-dom", "virtual:5f667c73984ed00ed0af2d2ee5bb7487501bcb7981faa0f3174f6b4e10779d128272858d90e1bd616db7bd20b70e6922af9582ba35aeace0a368e003ee8b65c2#npm:17.0.2"],
             ["react-router-dom", "virtual:5f667c73984ed00ed0af2d2ee5bb7487501bcb7981faa0f3174f6b4e10779d128272858d90e1bd616db7bd20b70e6922af9582ba35aeace0a368e003ee8b65c2#npm:6.2.1"],

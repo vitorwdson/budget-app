@@ -1,0 +1,15 @@
+mutation CreateBudget($name: String!, $maxValue: Float!) {
+  createBudget(
+    input: { name: $name, maxValue: $maxValue }
+  ) {
+    errors {
+      field
+      message
+    }
+    budget {
+      id
+      name
+      maxValue
+    }
+  }
+}
