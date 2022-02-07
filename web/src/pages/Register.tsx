@@ -1,7 +1,6 @@
 import { FC, FormEvent } from 'react';
 import Loading from '../components/Loading';
 import { useRegisterMutation } from '../generated/graphql';
-import MySwal from '../swal';
 
 const Register: FC = () => {
   const [registerResult, register] = useRegisterMutation();
@@ -24,23 +23,9 @@ const Register: FC = () => {
     });
   };
   
-  console.log(registerResult);
-  if (registerResult.fetching) return <Loading />;
-  if (registerResult.data?.createUser?.errors?.length) {
-    MySwal.fire({
-      icon: 'error',
-      title: registerResult.data.createUser.errors[0].message
-    });
-  }
-  if (registerResult.data?.createUser?.user) {
-    MySwal.fire({
-      icon: 'success',
-      title: 'User create successfully!'
-    }).then(() => window.open('/', '_self'));
-  }
-
   return (
     <>
+      <Loading />
       <h1>Register</h1>
       <form onSubmit={submitHandler}>
         <label htmlFor="first-name">First Name</label>

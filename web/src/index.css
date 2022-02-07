@@ -2,7 +2,7 @@
 
 :root {
   --dark-color: hsl(265, 25%, 25%);
-  --foreground-color: hsl(265, 25%, 35%);
+  --foreground-color: hsl(265, 25%, 45%);
   --highlight-color: hsl(265, 100%, 85%);
   --bright-color: hsl(265, 25%, 90%);
 }
