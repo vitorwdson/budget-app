@@ -7,7 +7,9 @@
   --bright-color: hsl(265, 25%, 90%);
 }
 
-*, *::after, *::before {
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
   box-sizing: border-box;

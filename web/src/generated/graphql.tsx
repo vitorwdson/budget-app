@@ -2,9 +2,15 @@ import gql from 'graphql-tag';
 import * as Urql from 'urql';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
@@ -78,21 +84,17 @@ export type Mutation = {
   login: UserResponse;
 };
 
-
 export type MutationCreateBudgetArgs = {
   input: BudgetInput;
 };
-
 
 export type MutationCreateExpenseArgs = {
   input: ExpenseInput;
 };
 
-
 export type MutationCreateUserArgs = {
   input: UserInput;
 };
-
 
 export type MutationLoginArgs = {
   input: LoginInput;
@@ -104,7 +106,6 @@ export type Query = {
   expenses: ExpensesResponse;
   user: UserType;
 };
-
 
 export type QueryExpensesArgs = {
   budgetId: Scalars['String'];
@@ -136,8 +137,23 @@ export type CreateBudgetMutationVariables = Exact<{
   maxValue: Scalars['Float'];
 }>;
 
-
-export type CreateBudgetMutation = { __typename?: 'Mutation', createBudget: { __typename?: 'BudgetResponse', errors?: Array<{ __typename?: 'ErrorType', field: string, message: string }> | null, budget?: { __typename?: 'BudgetType', id: string, name: string, maxValue: number } | null } };
+export type CreateBudgetMutation = {
+  __typename?: 'Mutation';
+  createBudget: {
+    __typename?: 'BudgetResponse';
+    errors?: Array<{
+      __typename?: 'ErrorType';
+      field: string;
+      message: string;
+    }> | null;
+    budget?: {
+      __typename?: 'BudgetType';
+      id: string;
+      name: string;
+      maxValue: number;
+    } | null;
+  };
+};
 
 export type CreateExpenseMutationVariables = Exact<{
   name: Scalars['String'];
@@ -145,16 +161,43 @@ export type CreateExpenseMutationVariables = Exact<{
   budgetId: Scalars['String'];
 }>;
 
-
-export type CreateExpenseMutation = { __typename?: 'Mutation', createExpense: { __typename?: 'ExpenseResponse', errors?: Array<{ __typename?: 'ErrorType', field: string, message: string }> | null, expense?: { __typename?: 'ExpenseType', id: string, name: string, value: number } | null } };
+export type CreateExpenseMutation = {
+  __typename?: 'Mutation';
+  createExpense: {
+    __typename?: 'ExpenseResponse';
+    errors?: Array<{
+      __typename?: 'ErrorType';
+      field: string;
+      message: string;
+    }> | null;
+    expense?: {
+      __typename?: 'ExpenseType';
+      id: string;
+      name: string;
+      value: number;
+    } | null;
+  };
+};
 
 export type LoginMutationVariables = Exact<{
   email: Scalars['String'];
   password: Scalars['String'];
 }>;
 
-
-export type LoginMutation = { __typename?: 'Mutation', login: { __typename?: 'UserResponse', errors?: Array<{ __typename?: 'ErrorType', message: string }> | null, user?: { __typename?: 'UserType', id: string, firstName: string, lastName: string, email: string } | null } };
+export type LoginMutation = {
+  __typename?: 'Mutation';
+  login: {
+    __typename?: 'UserResponse';
+    errors?: Array<{ __typename?: 'ErrorType'; message: string }> | null;
+    user?: {
+      __typename?: 'UserType';
+      id: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+    } | null;
+  };
+};
 
 export type RegisterMutationVariables = Exact<{
   firstName: Scalars['String'];
@@ -163,93 +206,208 @@ export type RegisterMutationVariables = Exact<{
   password: Scalars['String'];
 }>;
 
+export type RegisterMutation = {
+  __typename?: 'Mutation';
+  createUser: {
+    __typename?: 'UserResponse';
+    errors?: Array<{
+      __typename?: 'ErrorType';
+      field: string;
+      message: string;
+    }> | null;
+    user?: {
+      __typename?: 'UserType';
+      id: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+    } | null;
+  };
+};
 
-export type RegisterMutation = { __typename?: 'Mutation', createUser: { __typename?: 'UserResponse', errors?: Array<{ __typename?: 'ErrorType', field: string, message: string }> | null, user?: { __typename?: 'UserType', id: string, firstName: string, lastName: string, email: string } | null } };
+export type BudgetsQueryVariables = Exact<{ [key: string]: never }>;
 
-export type BudgetsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type BudgetsQuery = { __typename?: 'Query', budgets: Array<{ __typename?: 'BudgetType', id: string, name: string, maxValue: number, currentValue: number }> };
+export type BudgetsQuery = {
+  __typename?: 'Query';
+  budgets: Array<{
+    __typename?: 'BudgetType';
+    id: string;
+    name: string;
+    maxValue: number;
+    currentValue: number;
+  }>;
+};
 
 export type ExpensesQueryVariables = Exact<{
   budgetId: Scalars['String'];
 }>;
 
+export type ExpensesQuery = {
+  __typename?: 'Query';
+  expenses: {
+    __typename?: 'ExpensesResponse';
+    errors?: Array<{
+      __typename?: 'ErrorType';
+      field: string;
+      message: string;
+    }> | null;
+    expenses?: Array<{
+      __typename?: 'ExpenseType';
+      id: string;
+      name: string;
+      value: number;
+    }> | null;
+  };
+};
 
-export type ExpensesQuery = { __typename?: 'Query', expenses: { __typename?: 'ExpensesResponse', errors?: Array<{ __typename?: 'ErrorType', field: string, message: string }> | null, expenses?: Array<{ __typename?: 'ExpenseType', id: string, name: string, value: number }> | null } };
+export type MeQueryVariables = Exact<{ [key: string]: never }>;
 
-export type MeQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type MeQuery = { __typename?: 'Query', user: { __typename?: 'UserType', id: string, firstName: string, lastName: string, email: string } };
-
+export type MeQuery = {
+  __typename?: 'Query';
+  user: {
+    __typename?: 'UserType';
+    id: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+  };
+};
 
 export const CreateBudgetDocument = gql`
-    mutation CreateBudget($name: String!, $maxValue: Float!) {
-  createBudget(input: {name: $name, maxValue: $maxValue}) {
-    errors {
-      field
-      message
-    }
-    budget {
-      id
-      name
-      maxValue
+  mutation CreateBudget($name: String!, $maxValue: Float!) {
+    createBudget(input: { name: $name, maxValue: $maxValue }) {
+      errors {
+        field
+        message
+      }
+      budget {
+        id
+        name
+        maxValue
+      }
     }
   }
-}
-    `;
+`;
 
 export function useCreateBudgetMutation() {
-  return Urql.useMutation<CreateBudgetMutation, CreateBudgetMutationVariables>(CreateBudgetDocument);
+  return Urql.useMutation<CreateBudgetMutation, CreateBudgetMutationVariables>(
+    CreateBudgetDocument,
+  );
 }
 export const CreateExpenseDocument = gql`
-    mutation CreateExpense($name: String!, $value: Float!, $budgetId: String!) {
-  createExpense(input: {name: $name, value: $value, budgetId: $budgetId}) {
-    errors {
-      field
-      message
-    }
-    expense {
-      id
-      name
-      value
+  mutation CreateExpense($name: String!, $value: Float!, $budgetId: String!) {
+    createExpense(input: { name: $name, value: $value, budgetId: $budgetId }) {
+      errors {
+        field
+        message
+      }
+      expense {
+        id
+        name
+        value
+      }
     }
   }
-}
-    `;
+`;
 
 export function useCreateExpenseMutation() {
-  return Urql.useMutation<CreateExpenseMutation, CreateExpenseMutationVariables>(CreateExpenseDocument);
+  return Urql.useMutation<
+    CreateExpenseMutation,
+    CreateExpenseMutationVariables
+  >(CreateExpenseDocument);
 }
 export const LoginDocument = gql`
-    mutation Login($email: String!, $password: String!) {
-  login(input: {email: $email, password: $password}) {
-    errors {
-      message
-    }
-    user {
-      id
-      firstName
-      lastName
-      email
+  mutation Login($email: String!, $password: String!) {
+    login(input: { email: $email, password: $password }) {
+      errors {
+        message
+      }
+      user {
+        id
+        firstName
+        lastName
+        email
+      }
     }
   }
-}
-    `;
+`;
 
 export function useLoginMutation() {
   return Urql.useMutation<LoginMutation, LoginMutationVariables>(LoginDocument);
 }
 export const RegisterDocument = gql`
-    mutation Register($firstName: String!, $lastName: String!, $email: String!, $password: String!) {
-  createUser(
-    input: {firstName: $firstName, lastName: $lastName, email: $email, password: $password}
+  mutation Register(
+    $firstName: String!
+    $lastName: String!
+    $email: String!
+    $password: String!
   ) {
-    errors {
-      field
-      message
+    createUser(
+      input: {
+        firstName: $firstName
+        lastName: $lastName
+        email: $email
+        password: $password
+      }
+    ) {
+      errors {
+        field
+        message
+      }
+      user {
+        id
+        firstName
+        lastName
+        email
+      }
     }
+  }
+`;
+
+export function useRegisterMutation() {
+  return Urql.useMutation<RegisterMutation, RegisterMutationVariables>(
+    RegisterDocument,
+  );
+}
+export const BudgetsDocument = gql`
+  query Budgets {
+    budgets {
+      id
+      name
+      maxValue
+      currentValue
+    }
+  }
+`;
+
+export function useBudgetsQuery(
+  options?: Omit<Urql.UseQueryArgs<BudgetsQueryVariables>, 'query'>,
+) {
+  return Urql.useQuery<BudgetsQuery>({ query: BudgetsDocument, ...options });
+}
+export const ExpensesDocument = gql`
+  query Expenses($budgetId: String!) {
+    expenses(budgetId: $budgetId) {
+      errors {
+        field
+        message
+      }
+      expenses {
+        id
+        name
+        value
+      }
+    }
+  }
+`;
+
+export function useExpensesQuery(
+  options: Omit<Urql.UseQueryArgs<ExpensesQueryVariables>, 'query'>,
+) {
+  return Urql.useQuery<ExpensesQuery>({ query: ExpensesDocument, ...options });
+}
+export const MeDocument = gql`
+  query Me {
     user {
       id
       firstName
@@ -257,56 +415,10 @@ export const RegisterDocument = gql`
       email
     }
   }
-}
-    `;
+`;
 
-export function useRegisterMutation() {
-  return Urql.useMutation<RegisterMutation, RegisterMutationVariables>(RegisterDocument);
-}
-export const BudgetsDocument = gql`
-    query Budgets {
-  budgets {
-    id
-    name
-    maxValue
-    currentValue
-  }
-}
-    `;
-
-export function useBudgetsQuery(options?: Omit<Urql.UseQueryArgs<BudgetsQueryVariables>, 'query'>) {
-  return Urql.useQuery<BudgetsQuery>({ query: BudgetsDocument, ...options });
-}
-export const ExpensesDocument = gql`
-    query Expenses($budgetId: String!) {
-  expenses(budgetId: $budgetId) {
-    errors {
-      field
-      message
-    }
-    expenses {
-      id
-      name
-      value
-    }
-  }
-}
-    `;
-
-export function useExpensesQuery(options: Omit<Urql.UseQueryArgs<ExpensesQueryVariables>, 'query'>) {
-  return Urql.useQuery<ExpensesQuery>({ query: ExpensesDocument, ...options });
-}
-export const MeDocument = gql`
-    query Me {
-  user {
-    id
-    firstName
-    lastName
-    email
-  }
-}
-    `;
-
-export function useMeQuery(options?: Omit<Urql.UseQueryArgs<MeQueryVariables>, 'query'>) {
+export function useMeQuery(
+  options?: Omit<Urql.UseQueryArgs<MeQueryVariables>, 'query'>,
+) {
   return Urql.useQuery<MeQuery>({ query: MeDocument, ...options });
 }

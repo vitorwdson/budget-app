@@ -7,7 +7,7 @@ const Register: FC = () => {
 
   const submitHandler = (e: FormEvent) => {
     e.preventDefault();
-    
+
     const target = e.target as typeof e.target & {
       firstName: { value: string };
       lastName: { value: string };
@@ -22,7 +22,7 @@ const Register: FC = () => {
       password: target.password.value,
     });
   };
-  
+
   return (
     <>
       <Loading />
