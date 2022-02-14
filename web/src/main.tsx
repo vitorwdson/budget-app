@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { createClient, Provider } from 'urql';
+import { ChakraProvider } from '@chakra-ui/react';
+import theme from './theme';
+import { BrowserRouter } from 'react-router-dom';
 
 const client = createClient({
   url: 'http://localhost:4000/graphql',
@@ -12,10 +15,14 @@ const client = createClient({
 });
 
 ReactDOM.render(
-  <Provider value={client}>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </Provider>,
+  <ChakraProvider theme={theme}>
+    <BrowserRouter>
+      <Provider value={client}>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </Provider>
+    </BrowserRouter>
+  </ChakraProvider>,
   document.getElementById('root'),
 );

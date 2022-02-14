@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&display=swap');
 
-:root {
-  --dark-color: hsl(265, 25%, 25%);
-  --foreground-color: hsl(265, 25%, 45%);
-  --highlight-color: hsl(265, 100%, 85%);
-  --bright-color: hsl(265, 25%, 90%);
-}
-
 *,
 *::after,
 *::before {
@@ -16,8 +9,5 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
   min-height: 100vh;
-  background-color: var(--dark-color);
-  color: var(--bright-color);
 }

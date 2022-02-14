@@ -1,5 +1,8 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Box, Container, Grid, GridItem } from '@chakra-ui/react';
+import { useEffect } from 'react';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import Loading from './components/Loading';
+import Menu from './components/Menu';
 import { useMeQuery } from './generated/graphql';
 
 import Home from './pages/Home';
@@ -7,27 +10,42 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 
 function App() {
-  const [{ fetching, error }] = useMeQuery();
+  const [{ fetching, data }, reRunQuery] = useMeQuery();
+  const location = useLocation();
 
-  if (fetching) return <Loading />;
+  useEffect(() => {
+    reRunQuery();
+  }, [location]);
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={!error ? <Home /> : <Navigate to="/login" />}
-        />
-        <Route
-          path="/login"
-          element={!error ? <Navigate to="/" /> : <Login />}
-        />
-        <Route
-          path="/register"
-          element={!error ? <Navigate to="/" /> : <Register />}
-        />
-      </Routes>
-    </BrowserRouter>
+    <Box w="100vw">
+      <Container p="5" maxW="container.md" display="flex" minH="100vh">
+        <Grid templateColumns="1fr" templateRows="auto 1fr" gap="5" flex="100%">
+          <GridItem>
+            <Menu
+              userName={`${data?.user.firstName} ${data?.user.lastName}`}
+              loggedIn={!!data}
+            />
+          </GridItem>
+          <GridItem>
+            <Routes>
+              <Route
+                path="/"
+                element={data ? <Home /> : <Navigate to="/login" />}
+              />
+              <Route
+                path="/login"
+                element={data ? <Navigate to="/" /> : <Login />}
+              />
+              <Route
+                path="/register"
+                element={data ? <Navigate to="/" /> : <Register />}
+              />
+            </Routes>
+          </GridItem>
+        </Grid>
+      </Container>
+    </Box>
   );
 }
 
