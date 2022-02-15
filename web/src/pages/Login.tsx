@@ -63,14 +63,14 @@ const Login: FC = () => {
             <Form>
               <FormInput
                 type="email"
-                label="Email"
+                placeholder="Email"
                 name="email"
                 inputIcon={<EmailIcon />}
               />
               <br />
               <FormInput
                 type="password"
-                label="Password"
+                placeholder="Password"
                 name="password"
                 inputIcon={<LockIcon />}
               />

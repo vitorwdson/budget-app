@@ -12,7 +12,8 @@ import { FC, ReactNode } from 'react';
 
 type FormInputProps = {
   inputIcon?: ReactNode;
-  label: string;
+  label?: string;
+  placeholder?: string;
   type: string;
   helperText?: string;
 } & FieldConfig;
@@ -20,6 +21,7 @@ type FormInputProps = {
 const FormInput: FC<FormInputProps> = ({
   inputIcon,
   label,
+  placeholder,
   type,
   helperText,
   ...props
@@ -30,7 +32,7 @@ const FormInput: FC<FormInputProps> = ({
 
   return (
     <FormControl isInvalid={error}>
-      <FormLabel htmlFor={inputId}>{label}</FormLabel>
+      {label && <FormLabel htmlFor={inputId}>{label}</FormLabel>}
       <InputGroup>
         {inputIcon && (
           <InputLeftElement pointerEvents="none" children={inputIcon} />
@@ -38,6 +40,7 @@ const FormInput: FC<FormInputProps> = ({
         <Input
           id={inputId}
           {...field}
+          placeholder={placeholder}
           type={type}
           border="1px"
           borderColor="gray.400"
