@@ -8,7 +8,9 @@ import {
   Icon,
 } from '@chakra-ui/react';
 import { FC } from 'react';
-import { MdLogout, MdCreate, MdLogin } from 'react-icons/md';
+import { MdLogout } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
+import { useLogoutMutation } from '../generated/graphql';
 
 interface MenuProps {
   userName?: string;
@@ -16,6 +18,14 @@ interface MenuProps {
 }
 
 const Menu: FC<MenuProps> = ({ userName, loggedIn }) => {
+  const [_, logout] = useLogoutMutation();
+  const navigate = useNavigate();
+
+  const logoutButtonHandler = async () => {
+    await logout();
+    navigate('/login', { replace: true });
+  };
+
   return (
     <Flex border="1px" borderColor="gray.500" borderRadius="3xl" p="4">
       <Center>
@@ -42,7 +52,12 @@ const Menu: FC<MenuProps> = ({ userName, loggedIn }) => {
             </Heading>
           </Box>
           <Box display="flex">
-            <Button colorScheme="red" variant="link" minW="0">
+            <Button
+              colorScheme="red"
+              variant="link"
+              minW="0"
+              onClick={logoutButtonHandler}
+            >
               <Icon as={MdLogout} boxSize="1.5em" />
             </Button>
           </Box>

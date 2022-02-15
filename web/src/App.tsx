@@ -28,20 +28,22 @@ function App() {
             />
           </GridItem>
           <GridItem>
-            <Routes>
-              <Route
-                path="/"
-                element={data ? <Home /> : <Navigate to="/login" />}
-              />
-              <Route
-                path="/login"
-                element={data ? <Navigate to="/" /> : <Login />}
-              />
-              <Route
-                path="/register"
-                element={data ? <Navigate to="/" /> : <Register />}
-              />
-            </Routes>
+            {!fetching && (
+              <Routes>
+                <Route
+                  path="/"
+                  element={data ? <Home /> : <Navigate to="/login" />}
+                />
+                <Route
+                  path="/login"
+                  element={data ? <Navigate to="/" /> : <Login />}
+                />
+                <Route
+                  path="/register"
+                  element={data ? <Navigate to="/" /> : <Register />}
+                />
+              </Routes>
+            )}
           </GridItem>
         </Grid>
       </Container>
