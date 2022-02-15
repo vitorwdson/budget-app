@@ -15,17 +15,31 @@ interface BudgetProps {
   currentValue: number;
 }
 
-const colors = ['green', 'yellow', 'orange', 'red'];
+const colors = ['green', 'yellow', 'orange'];
+const shades = ['400', '500', '600', '700', '800'];
 
 const Budget: FC<BudgetProps> = ({ name, maxValue, currentValue }) => {
-  const colorSize = maxValue / (colors.length - 1);
+  const colorSize = maxValue / colors.length;
   const colorIndex = Math.min(
     Math.floor(currentValue / colorSize),
     colors.length - 1,
   );
 
-  const colorScheme = colors[colorIndex];
-  const color = `${colorScheme}.500`;
+  const shadeSize = colorSize / shades.length;
+  const shadeIndex = Math.min(
+    Math.floor((currentValue % colorSize) / shadeSize),
+    shades.length - 1,
+  );
+
+  let colorScheme = colors[colorIndex];
+  let colorShade = shades[shadeIndex];
+
+  if (currentValue >= maxValue) {
+    colorScheme = 'red';
+    colorShade = currentValue > maxValue ? '800' : '600';
+  }
+
+  const color = `${colorScheme}.${colorShade}`;
 
   const value = Math.max((currentValue / maxValue) * 100, 1);
 
@@ -53,6 +67,9 @@ const Budget: FC<BudgetProps> = ({ name, maxValue, currentValue }) => {
         colorScheme={colorScheme}
         sx={{
           backgroundColor: `${colorScheme}.100`,
+          '& > div': {
+            backgroundColor: color,
+          },
         }}
       />
       <ButtonGroup
