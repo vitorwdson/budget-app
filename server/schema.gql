@@ -56,6 +56,7 @@ type Query {
 type Mutation {
   createUser(input: UserInput!): UserResponse!
   login(input: LoginInput!): UserResponse!
+  logout: Boolean!
   createBudget(input: BudgetInput!): BudgetResponse!
   createExpense(input: ExpenseInput!): ExpenseResponse!
 }

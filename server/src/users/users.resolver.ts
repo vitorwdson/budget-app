@@ -127,4 +127,13 @@ export class UsersResolver {
 
     return { errors: null, user };
   }
+
+  @UseGuards(AuthGuard)
+  @Mutation(() => Boolean)
+  async logout(@Res({ passthrough: true }) response: Response) {
+    response.clearCookie('access-token');
+    response.clearCookie('refresh-token');
+
+    return true;
+  }
 }
