@@ -48,6 +48,7 @@ const Login: FC = () => {
             onSubmit={async (values: Values, { setSubmitting }) => {
               setSubmitting(true);
               const result = await login(values);
+              setSubmitting(false);
 
               const errors = result.data?.login.errors;
               if (errors) {
@@ -56,8 +57,6 @@ const Login: FC = () => {
               } else {
                 navigate('/', { replace: true });
               }
-
-              setSubmitting(false);
             }}
             validationSchema={validationSchema}
           >
