@@ -47,6 +47,11 @@ type ExpensesResponse {
   expenses: [ExpenseType!]
 }
 
+type DeleteExpensesResponse {
+  errors: [ErrorType!]
+  expenseId: ID
+}
+
 type Query {
   user: UserType!
   budgets: [BudgetType!]!
@@ -59,6 +64,7 @@ type Mutation {
   logout: Boolean!
   createBudget(input: BudgetInput!): BudgetResponse!
   createExpense(input: ExpenseInput!): ExpenseResponse!
+  deleteExpense(expenseId: String!): DeleteExpensesResponse!
 }
 
 input UserInput {

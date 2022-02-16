@@ -1,4 +1,4 @@
-import { Model } from 'mongoose';
+import { Model, ObjectId } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { BudgetDocument } from './interfaces/budget.interface';
@@ -21,7 +21,10 @@ export class BudgetsService {
     return await newBudget.save();
   }
 
-  async belongsToUser(budgetId: string, user: UserDocument): Promise<boolean> {
+  async belongsToUser(
+    budgetId: string | ObjectId,
+    user: UserDocument,
+  ): Promise<boolean> {
     const budget = await this.budgetModel.findById(budgetId);
     const userId = budget.userId.toString();
 

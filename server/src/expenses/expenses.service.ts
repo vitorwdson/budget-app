@@ -18,4 +18,12 @@ export class ExpensesService {
   async findAll(budgetId: string): Promise<ExpenseDocument[]> {
     return await this.expenseModel.find({ budgetId });
   }
+
+  async findById(findById: string): Promise<ExpenseDocument> {
+    try {
+      return await this.expenseModel.findById(findById);
+    } catch (_) {
+      return null;
+    }
+  }
 }

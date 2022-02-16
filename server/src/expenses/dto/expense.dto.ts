@@ -26,3 +26,11 @@ export class ExpensesResponse {
   @Field(() => [ExpenseType], { nullable: true })
   expenses?: ExpenseType[];
 }
+
+@ObjectType()
+export class DeleteExpensesResponse {
+  @Field(() => [ErrorType], { nullable: true })
+  errors?: ErrorType[];
+  @Field(() => ID, { nullable: true })
+  expenseId?: string;
+}
