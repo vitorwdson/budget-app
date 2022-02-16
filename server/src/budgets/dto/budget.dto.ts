@@ -20,3 +20,11 @@ export class BudgetResponse {
   @Field(() => BudgetType, { nullable: true })
   budget?: BudgetType;
 }
+
+@ObjectType()
+export class DeleteBudgetResponse {
+  @Field(() => [ErrorType], { nullable: true })
+  errors?: ErrorType[];
+  @Field(() => ID, { nullable: true })
+  budgetId?: string;
+}

@@ -50,6 +50,7 @@ export class ExpensesResolver {
   @UseGuards(AuthGuard)
   @Mutation(() => ExpenseResponse)
   async createExpense(@Args('input') input: ExpenseInput) {
+    // TODO: Prevent creation when budget doesn't exists
     const validation = validateExpenseData(input);
 
     if (validation != null) {

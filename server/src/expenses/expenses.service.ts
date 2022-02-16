@@ -19,7 +19,7 @@ export class ExpensesService {
     return await this.expenseModel.find({ budgetId });
   }
 
-  async findById(findById: string): Promise<ExpenseDocument> {
+  async findById(findById: string): Promise<ExpenseDocument | null> {
     try {
       return await this.expenseModel.findById(findById);
     } catch (_) {

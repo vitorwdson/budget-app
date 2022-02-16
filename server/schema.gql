@@ -31,6 +31,11 @@ type BudgetResponse {
   budget: BudgetType
 }
 
+type DeleteBudgetResponse {
+  errors: [ErrorType!]
+  budgetId: ID
+}
+
 type ExpenseType {
   id: ID!
   name: String!
@@ -63,6 +68,7 @@ type Mutation {
   login(input: LoginInput!): UserResponse!
   logout: Boolean!
   createBudget(input: BudgetInput!): BudgetResponse!
+  deleteBudget(budgetId: String!): DeleteBudgetResponse!
   createExpense(input: ExpenseInput!): ExpenseResponse!
   deleteExpense(expenseId: String!): DeleteExpensesResponse!
 }

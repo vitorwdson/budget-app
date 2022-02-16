@@ -52,4 +52,12 @@ export class BudgetsService {
       }),
     );
   }
+
+  async findById(budgetId: string | ObjectId): Promise<BudgetDocument | null> {
+    try {
+      return await this.budgetModel.findById(budgetId);
+    } catch (_) {
+      return null;
+    }
+  }
 }

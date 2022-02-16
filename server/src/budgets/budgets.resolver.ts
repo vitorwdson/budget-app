@@ -7,7 +7,11 @@ import { UserDocument } from '../users/interfaces/user.interface';
 import { AuthGuard, User } from '../users/users.decorators';
 import { BudgetsService } from './budgets.service';
 import { validateBudgetData } from './budgets.validators';
-import { BudgetType, BudgetResponse } from './dto/budget.dto';
+import {
+  BudgetType,
+  BudgetResponse,
+  DeleteBudgetResponse,
+} from './dto/budget.dto';
 import { BudgetInput } from './inputs/budget.input';
 
 @Resolver()
@@ -47,5 +51,35 @@ export class BudgetsResolver {
       errors: null,
       budget,
     };
+  }
+
+  @UseGuards(AuthGuard)
+  @Mutation(() => DeleteBudgetResponse)
+  async deleteBudget(
+    @Args('budgetId') budgetId: string,
+    @User() user: UserDocument,
+  ) {
+    const budget = await this.budgetsService.findById(budgetId);
+    if (!budget) {
+      return {
+        errors: [{ message: "The specified budget doesn't exist" }],
+      };
+    }
+
+    if (budget.userId != user.id) {
+      return {
+        errors: [
+          {
+            message: "The specified budget doesn't belong to the current user",
+          },
+        ],
+      };
+    }
+
+    const expenses = await this.expensesService.findAll(budgetId);
+    await Promise.all(expenses.map((expense) => expense.delete()));
+
+    await budget.delete();
+    return { budgetId };
   }
 }
