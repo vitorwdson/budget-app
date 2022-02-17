@@ -27,6 +27,7 @@ const ErrorDialog: FC<ErrorDialogProps> = ({ display, hide, message }) => {
       leastDestructiveRef={modalCloseButtonRef}
       onClose={hide}
       colorScheme="red"
+      isCentered
     >
       <AlertDialogOverlay>
         <AlertDialogContent alignSelf="center">

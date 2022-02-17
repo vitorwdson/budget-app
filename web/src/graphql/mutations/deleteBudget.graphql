@@ -1,0 +1,8 @@
+mutation DeleteBudget($budgetId: String!) {
+  deleteBudget(budgetId: $budgetId) {
+    errors {
+      message
+    }
+    budgetId
+  }
+}

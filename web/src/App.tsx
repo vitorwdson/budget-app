@@ -18,7 +18,7 @@ function App() {
   }, [location]);
 
   return (
-    <Box w="100vw">
+    <Box>
       <Container p="5" maxW="container.md" display="flex" minH="100vh">
         <Grid templateColumns="1fr" templateRows="auto 1fr" gap="5" flex="100%">
           <GridItem>

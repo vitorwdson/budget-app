@@ -7,3 +7,6 @@ generates:
       - 'typescript'
       - 'typescript-operations'
       - 'typescript-urql'
+hooks:
+  afterAllFileWrite:
+    - prettier --write src/generated/graphql.tsx

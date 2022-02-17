@@ -1,24 +1,29 @@
 import {
   Box,
-  Button,
-  ButtonGroup,
   Flex,
   Heading,
+  Icon,
   Progress,
   Spacer,
+  useBoolean,
 } from '@chakra-ui/react';
 import { FC } from 'react';
+import { MdAddCircle, MdDeleteForever, MdReorder } from 'react-icons/md';
+import { useDeleteBudgetMutation } from '../generated/graphql';
+import ConfirmAlertBox from './ConfirmDeleteAlert';
+import SquareButton from './SquareButton';
 
 interface BudgetProps {
+  budgetId: string;
   name: string;
   maxValue: number;
   currentValue: number;
 }
 
-const colors = ['green', 'yellow', 'orange'];
-const shades = ['400', '500', '600', '700', '800'];
+function getBudgetColor(maxValue: number, currentValue: number) {
+  const colors = ['green', 'yellow', 'orange'];
+  const shades = ['400', '500', '600', '700', '800'];
 
-const Budget: FC<BudgetProps> = ({ name, maxValue, currentValue }) => {
   const colorSize = maxValue / colors.length;
   const colorIndex = Math.min(
     Math.floor(currentValue / colorSize),
@@ -40,8 +45,26 @@ const Budget: FC<BudgetProps> = ({ name, maxValue, currentValue }) => {
   }
 
   const color = `${colorScheme}.${colorShade}`;
+  return { colorScheme, colorShade, color };
+}
 
+const Budget: FC<BudgetProps> = ({
+  budgetId,
+  name,
+  maxValue,
+  currentValue,
+}) => {
+  const [, deleteBudget] = useDeleteBudgetMutation();
+  const [showDeleteConfirm, setShowDeleteConfirm] = useBoolean(false);
+
+  const { colorScheme, color } = getBudgetColor(maxValue, currentValue);
   const value = Math.max((currentValue / maxValue) * 100, 1);
+
+  async function deleteHandler() {
+    await deleteBudget({
+      budgetId,
+    });
+  }
 
   return (
     <Box
@@ -64,7 +87,6 @@ const Budget: FC<BudgetProps> = ({ name, maxValue, currentValue }) => {
         size="lg"
         mt="3"
         borderRadius="lg"
-        colorScheme={colorScheme}
         sx={{
           backgroundColor: `${colorScheme}.100`,
           '& > div': {
@@ -72,16 +94,22 @@ const Budget: FC<BudgetProps> = ({ name, maxValue, currentValue }) => {
           },
         }}
       />
-      <ButtonGroup
-        mt="3"
-        sx={{
-          display: 'flex',
-          justifyContent: 'end',
-        }}
-      >
-        <Button colorScheme="teal">View Expenses</Button>
-        <Button colorScheme="green">Add Expense</Button>
-      </ButtonGroup>
+      <Flex mt="3" gap="3" justifyContent="flex-end">
+        <SquareButton colorScheme="red" onClick={setShowDeleteConfirm.on}>
+          <Icon boxSize="1.5em" as={MdDeleteForever} />
+        </SquareButton>
+        <SquareButton colorScheme="teal">
+          <Icon boxSize="1.5em" as={MdReorder} />
+        </SquareButton>
+        <SquareButton colorScheme="green">
+          <Icon boxSize="1.5em" as={MdAddCircle} />
+        </SquareButton>
+      </Flex>
+      <ConfirmAlertBox
+        isOpen={showDeleteConfirm}
+        hide={setShowDeleteConfirm.off}
+        onDelete={deleteHandler}
+      />
     </Box>
   );
 };

@@ -1,0 +1,8 @@
+mutation DeleteExpense($expenseId: String!) {
+  deleteExpense(expenseId: $expenseId) {
+    errors {
+      message
+    }
+    expenseId
+  }
+}

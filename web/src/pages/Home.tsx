@@ -1,15 +1,23 @@
 import { FC } from 'react';
 import Budget from '../components/Budget';
+import { useBudgetsQuery } from '../generated/graphql';
 
 const Home: FC = () => {
+  const [{ fetching, data }] = useBudgetsQuery();
+
   return (
     <>
-      <Budget name="Education" maxValue={1500.53} currentValue={100} />
-      <Budget name="Education" maxValue={1500.53} currentValue={700} />
-      <Budget name="Education" maxValue={1500.53} currentValue={1200} />
-      <Budget name="Education" maxValue={1500.53} currentValue={1700} />
-      <Budget name="Education" maxValue={1500.53} currentValue={500} />
-      <Budget name="Education" maxValue={1500.53} currentValue={0} />
+      {fetching && <h1>Loading...</h1>}
+
+      {data?.budgets.map((budget) => (
+        <Budget
+          key={budget.id}
+          budgetId={budget.id}
+          name={budget.name}
+          maxValue={budget.maxValue}
+          currentValue={budget.currentValue}
+        />
+      ))}
     </>
   );
 };
