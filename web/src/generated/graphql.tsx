@@ -127,7 +127,7 @@ export type Query = {
   __typename?: 'Query';
   budgets: Array<BudgetType>;
   expenses: ExpensesResponse;
-  user: UserType;
+  me: UserType;
 };
 
 export type QueryExpensesArgs = {
@@ -317,7 +317,7 @@ export type MeQueryVariables = Exact<{ [key: string]: never }>;
 
 export type MeQuery = {
   __typename?: 'Query';
-  user: {
+  me: {
     __typename?: 'UserType';
     id: string;
     firstName: string;
@@ -505,7 +505,7 @@ export function useExpensesQuery(
 }
 export const MeDocument = gql`
   query Me {
-    user {
+    me {
       id
       firstName
       lastName

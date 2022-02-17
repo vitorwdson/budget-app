@@ -17,6 +17,7 @@ import {
   LogoutMutation,
   MeDocument,
   MeQuery,
+  RegisterMutation,
 } from './generated/graphql';
 
 type CacheExchangeType = {
@@ -24,6 +25,12 @@ type CacheExchangeType = {
     Mutation: {
       login: (
         result: LoginMutation,
+        args: Variables,
+        cache: Cache,
+        info: ResolveInfo,
+      ) => void;
+      register: (
+        result: RegisterMutation,
         args: Variables,
         cache: Cache,
         info: ResolveInfo,
@@ -49,14 +56,27 @@ const client = createClient({
       updates: {
         Mutation: {
           login: (result, args, cache, info) => {
-            console.log('login');
             cache.updateQuery<MeQuery>(
               {
                 query: MeDocument,
               },
               (data) => {
                 if (result.login.user) {
-                  return { user: result.login.user };
+                  return { me: result.login.user };
+                }
+
+                return data;
+              },
+            );
+          },
+          register: (result, args, cache, info) => {
+            cache.updateQuery<MeQuery>(
+              {
+                query: MeDocument,
+              },
+              (data) => {
+                if (result.createUser.user) {
+                  return { me: result.createUser.user };
                 }
 
                 return data;
@@ -64,7 +84,6 @@ const client = createClient({
             );
           },
           logout: (result, args, cache, info) => {
-            console.log('logout');
             cache.invalidate(
               {
                 __typename: 'Query',

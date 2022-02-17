@@ -1,5 +1,5 @@
 query Me {
-  user {
+  me {
     id
     firstName
     lastName

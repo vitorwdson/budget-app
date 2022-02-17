@@ -23,7 +23,7 @@ function App() {
         <Grid templateColumns="1fr" templateRows="auto 1fr" gap="5" flex="100%">
           <GridItem>
             <Menu
-              userName={`${data?.user.firstName} ${data?.user.lastName}`}
+              userName={`${data?.me.firstName} ${data?.me.lastName}`}
               loggedIn={!!data}
             />
           </GridItem>
