@@ -11,6 +11,7 @@ import { FC } from 'react';
 import { MdAddCircle, MdDeleteForever, MdReorder } from 'react-icons/md';
 import { useDeleteBudgetMutation } from '../generated/graphql';
 import ConfirmAlertBox from './ConfirmDeleteAlert';
+import NewExpenseModal from './NewExpenseModal';
 import SquareButton from './SquareButton';
 
 interface BudgetProps {
@@ -56,6 +57,7 @@ const Budget: FC<BudgetProps> = ({
 }) => {
   const [, deleteBudget] = useDeleteBudgetMutation();
   const [showDeleteConfirm, setShowDeleteConfirm] = useBoolean(false);
+  const [showNewExpenseModal, setShowNewExpenseModal] = useBoolean(false);
 
   const { colorScheme, color } = getBudgetColor(maxValue, currentValue);
   const value = Math.max((currentValue / maxValue) * 100, 1);
@@ -101,14 +103,21 @@ const Budget: FC<BudgetProps> = ({
         <SquareButton colorScheme="teal">
           <Icon boxSize="1.5em" as={MdReorder} />
         </SquareButton>
-        <SquareButton colorScheme="green">
+        <SquareButton colorScheme="green" onClick={setShowNewExpenseModal.on}>
           <Icon boxSize="1.5em" as={MdAddCircle} />
         </SquareButton>
       </Flex>
+
       <ConfirmAlertBox
         isOpen={showDeleteConfirm}
         hide={setShowDeleteConfirm.off}
         onDelete={deleteHandler}
+      />
+
+      <NewExpenseModal
+        budgetId={budgetId}
+        isOpen={showNewExpenseModal}
+        hide={setShowNewExpenseModal.off}
       />
     </Box>
   );

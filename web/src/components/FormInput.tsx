@@ -9,6 +9,7 @@ import {
 } from '@chakra-ui/react';
 import { FieldConfig, useField } from 'formik';
 import { FC, ReactNode } from 'react';
+import NumberFormat from 'react-number-format';
 
 type FormInputProps = {
   inputIcon?: ReactNode;
@@ -37,14 +38,27 @@ const FormInput: FC<FormInputProps> = ({
         {inputIcon && (
           <InputLeftElement pointerEvents="none" children={inputIcon} />
         )}
-        <Input
-          id={inputId}
-          {...field}
-          placeholder={placeholder}
-          type={type}
-          border="1px"
-          borderColor="gray.400"
-        />
+        {type === 'text' && (
+          <Input
+            id={inputId}
+            {...field}
+            placeholder={placeholder}
+            type={type}
+            border="1px"
+            borderColor="gray.400"
+          />
+        )}
+        {type === 'number' && (
+          <NumberFormat
+            {...field}
+            thousandSeparator={true}
+            prefix={'$'}
+            customInput={Input}
+            border="1px"
+            borderColor="gray.400"
+            decimalScale={2}
+          />
+        )}
       </InputGroup>
       {!error && helperText && <FormHelperText>{helperText}</FormHelperText>}
       <FormErrorMessage>{meta.error}</FormErrorMessage>
