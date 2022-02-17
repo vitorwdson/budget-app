@@ -51,6 +51,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/eslint-plugin", "virtual:5f667c73984ed00ed0af2d2ee5bb7487501bcb7981faa0f3174f6b4e10779d128272858d90e1bd616db7bd20b70e6922af9582ba35aeace0a368e003ee8b65c2#npm:5.10.2"],
             ["@typescript-eslint/parser", "virtual:5f667c73984ed00ed0af2d2ee5bb7487501bcb7981faa0f3174f6b4e10779d128272858d90e1bd616db7bd20b70e6922af9582ba35aeace0a368e003ee8b65c2#npm:5.10.2"],
             ["@urql/exchange-graphcache", "virtual:5f667c73984ed00ed0af2d2ee5bb7487501bcb7981faa0f3174f6b4e10779d128272858d90e1bd616db7bd20b70e6922af9582ba35aeace0a368e003ee8b65c2#npm:4.3.6"],
+            ["@urql/exchange-refocus", "virtual:5f667c73984ed00ed0af2d2ee5bb7487501bcb7981faa0f3174f6b4e10779d128272858d90e1bd616db7bd20b70e6922af9582ba35aeace0a368e003ee8b65c2#npm:0.2.5"],
             ["@vitejs/plugin-react", "npm:1.1.4"],
             ["eslint", "npm:8.8.0"],
             ["eslint-config-prettier", "virtual:5f667c73984ed00ed0af2d2ee5bb7487501bcb7981faa0f3174f6b4e10779d128272858d90e1bd616db7bd20b70e6922af9582ba35aeace0a368e003ee8b65c2#npm:8.3.0"],
@@ -6487,6 +6488,30 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/__virtual__/@urql-exchange-graphcache-virtual-f1fc60de6d/0/cache/@urql-exchange-graphcache-npm-4.3.6-40801f6733-861d52572d.zip/node_modules/@urql/exchange-graphcache/",
           "packageDependencies": [
             ["@urql/exchange-graphcache", "virtual:5f667c73984ed00ed0af2d2ee5bb7487501bcb7981faa0f3174f6b4e10779d128272858d90e1bd616db7bd20b70e6922af9582ba35aeace0a368e003ee8b65c2#npm:4.3.6"],
+            ["@types/graphql", null],
+            ["@urql/core", "virtual:f1fc60de6ddee304e3a5637458cc5e8bf18e472168b6efd9623d33d29e84f1fb33b6a532634ef151e7efe16c817951b35ec6196183c82faf748a6fb97c0dacf0#npm:2.4.1"],
+            ["graphql", "npm:16.3.0"],
+            ["wonka", "npm:4.0.15"]
+          ],
+          "packagePeers": [
+            "@types/graphql",
+            "graphql"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@urql/exchange-refocus", [
+        ["npm:0.2.5", {
+          "packageLocation": "./.yarn/cache/@urql-exchange-refocus-npm-0.2.5-7f884b25f9-d4380676be.zip/node_modules/@urql/exchange-refocus/",
+          "packageDependencies": [
+            ["@urql/exchange-refocus", "npm:0.2.5"]
+          ],
+          "linkType": "SOFT",
+        }],
+        ["virtual:5f667c73984ed00ed0af2d2ee5bb7487501bcb7981faa0f3174f6b4e10779d128272858d90e1bd616db7bd20b70e6922af9582ba35aeace0a368e003ee8b65c2#npm:0.2.5", {
+          "packageLocation": "./.yarn/__virtual__/@urql-exchange-refocus-virtual-a273301203/0/cache/@urql-exchange-refocus-npm-0.2.5-7f884b25f9-d4380676be.zip/node_modules/@urql/exchange-refocus/",
+          "packageDependencies": [
+            ["@urql/exchange-refocus", "virtual:5f667c73984ed00ed0af2d2ee5bb7487501bcb7981faa0f3174f6b4e10779d128272858d90e1bd616db7bd20b70e6922af9582ba35aeace0a368e003ee8b65c2#npm:0.2.5"],
             ["@types/graphql", null],
             ["@urql/core", "virtual:f1fc60de6ddee304e3a5637458cc5e8bf18e472168b6efd9623d33d29e84f1fb33b6a532634ef151e7efe16c817951b35ec6196183c82faf748a6fb97c0dacf0#npm:2.4.1"],
             ["graphql", "npm:16.3.0"],
@@ -20288,6 +20313,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@typescript-eslint/eslint-plugin", "virtual:5f667c73984ed00ed0af2d2ee5bb7487501bcb7981faa0f3174f6b4e10779d128272858d90e1bd616db7bd20b70e6922af9582ba35aeace0a368e003ee8b65c2#npm:5.10.2"],
             ["@typescript-eslint/parser", "virtual:5f667c73984ed00ed0af2d2ee5bb7487501bcb7981faa0f3174f6b4e10779d128272858d90e1bd616db7bd20b70e6922af9582ba35aeace0a368e003ee8b65c2#npm:5.10.2"],
             ["@urql/exchange-graphcache", "virtual:5f667c73984ed00ed0af2d2ee5bb7487501bcb7981faa0f3174f6b4e10779d128272858d90e1bd616db7bd20b70e6922af9582ba35aeace0a368e003ee8b65c2#npm:4.3.6"],
+            ["@urql/exchange-refocus", "virtual:5f667c73984ed00ed0af2d2ee5bb7487501bcb7981faa0f3174f6b4e10779d128272858d90e1bd616db7bd20b70e6922af9582ba35aeace0a368e003ee8b65c2#npm:0.2.5"],
             ["@vitejs/plugin-react", "npm:1.1.4"],
             ["eslint", "npm:8.8.0"],
             ["eslint-config-prettier", "virtual:5f667c73984ed00ed0af2d2ee5bb7487501bcb7981faa0f3174f6b4e10779d128272858d90e1bd616db7bd20b70e6922af9582ba35aeace0a368e003ee8b65c2#npm:8.3.0"],

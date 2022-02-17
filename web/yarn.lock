@@ -3780,6 +3780,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@urql/exchange-refocus@npm:^0.2.5":
+  version: 0.2.5
+  resolution: "@urql/exchange-refocus@npm:0.2.5"
+  dependencies:
+    "@urql/core": ">=2.3.6"
+    wonka: ^4.0.14
+  peerDependencies:
+    graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
+  checksum: d4380676bedb40dfad32bdb354dd5faec6bc79bb279596a6be7de59ef3725e9abc65a9fde6bc5e4e3db97a33806aed662a42b3095950627375059cbd339a8d39
+  languageName: node
+  linkType: hard
+
 "@vitejs/plugin-react@npm:^1.0.7":
   version: 1.1.4
   resolution: "@vitejs/plugin-react@npm:1.1.4"
@@ -15709,6 +15721,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": latest
     "@typescript-eslint/parser": latest
     "@urql/exchange-graphcache": ^4.3.6
+    "@urql/exchange-refocus": ^0.2.5
     "@vitejs/plugin-react": ^1.0.7
     eslint: ^8.8.0
     eslint-config-prettier: ^8.3.0
