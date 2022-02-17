@@ -17,9 +17,7 @@ interface ErrorDialogProps {
 }
 
 const ErrorDialog: FC<ErrorDialogProps> = ({ display, hide, message }) => {
-  const modalCloseButtonRef = useRef() as
-    | RefObject<FocusableElement>
-    | undefined;
+  const modalCloseButtonRef = useRef(null);
 
   return (
     <AlertDialog
@@ -42,7 +40,7 @@ const ErrorDialog: FC<ErrorDialogProps> = ({ display, hide, message }) => {
           <AlertDialogBody textAlign="center">{message}</AlertDialogBody>
 
           <AlertDialogFooter justifyContent="center">
-            <Button colorScheme="teal" onClick={hide}>
+            <Button ref={modalCloseButtonRef} colorScheme="teal" onClick={hide}>
               Ok
             </Button>
           </AlertDialogFooter>
