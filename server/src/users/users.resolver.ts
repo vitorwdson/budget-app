@@ -18,7 +18,7 @@ export class UsersResolver {
 
   @Query(() => UserType)
   @UseGuards(AuthGuard)
-  async user(@User() user: UserDocument) {
+  async me(@User() user: UserDocument) {
     return user;
   }
 

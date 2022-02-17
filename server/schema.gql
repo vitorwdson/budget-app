@@ -58,7 +58,7 @@ type DeleteExpensesResponse {
 }
 
 type Query {
-  user: UserType!
+  me: UserType!
   budgets: [BudgetType!]!
   expenses(budgetId: String!): ExpensesResponse!
 }
