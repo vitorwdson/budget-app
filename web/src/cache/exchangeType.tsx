@@ -4,6 +4,7 @@ import {
   RegisterMutation,
   LogoutMutation,
   DeleteBudgetMutation,
+  CreateExpenseMutation,
 } from '../generated/graphql';
 
 type CacheExchangeType = {
@@ -29,6 +30,12 @@ type CacheExchangeType = {
       ) => void;
       deleteBudget: (
         result: DeleteBudgetMutation,
+        args: Variables,
+        cache: Cache,
+        info: ResolveInfo,
+      ) => void;
+      createExpense: (
+        result: CreateExpenseMutation,
         args: Variables,
         cache: Cache,
         info: ResolveInfo,

@@ -69,6 +69,32 @@ const exchanges = [
             },
           );
         },
+        createExpense(result, args, cache, info) {
+          const expense = result.createExpense.expense;
+          if (!expense) return;
+
+          cache.updateQuery<BudgetsQuery>(
+            {
+              query: BudgetsDocument,
+            },
+            (data) => {
+              if (data) {
+                return {
+                  budgets: data.budgets.map((budget) =>
+                    budget.id !== expense.id
+                      ? {
+                          ...budget,
+                          currentValue: budget.currentValue + expense.value,
+                        }
+                      : budget,
+                  ),
+                };
+              }
+
+              return data;
+            },
+          );
+        },
       },
     },
   }),
