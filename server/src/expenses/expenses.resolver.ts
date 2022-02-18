@@ -28,6 +28,7 @@ export class ExpensesResolver {
     @Args('budgetId') budgetId: string,
     @User() user: UserDocument,
   ) {
+    // TODO: Fix error when the budget doesn't exist
     const belongs = await this.budgetsService.belongsToUser(budgetId, user);
     if (!belongs) {
       return {
@@ -98,6 +99,6 @@ export class ExpensesResolver {
     }
 
     await expense.delete();
-    return { expenseId: expense.id };
+    return { expense };
   }
 }

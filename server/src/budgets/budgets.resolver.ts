@@ -80,6 +80,6 @@ export class BudgetsResolver {
     await Promise.all(expenses.map((expense) => expense.delete()));
 
     await budget.delete();
-    return { budgetId };
+    return { budget };
   }
 }

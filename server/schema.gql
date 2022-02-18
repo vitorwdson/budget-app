@@ -33,13 +33,14 @@ type BudgetResponse {
 
 type DeleteBudgetResponse {
   errors: [ErrorType!]
-  budgetId: ID
+  budget: BudgetType
 }
 
 type ExpenseType {
   id: ID!
   name: String!
   value: Float!
+  budgetId: ID!
 }
 
 type ExpenseResponse {
@@ -54,7 +55,7 @@ type ExpensesResponse {
 
 type DeleteExpensesResponse {
   errors: [ErrorType!]
-  expenseId: ID
+  expense: ExpenseType
 }
 
 type Query {

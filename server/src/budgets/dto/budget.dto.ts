@@ -25,6 +25,6 @@ export class BudgetResponse {
 export class DeleteBudgetResponse {
   @Field(() => [ErrorType], { nullable: true })
   errors?: ErrorType[];
-  @Field(() => ID, { nullable: true })
-  budgetId?: string;
+  @Field(() => BudgetType, { nullable: true })
+  budget?: BudgetType;
 }

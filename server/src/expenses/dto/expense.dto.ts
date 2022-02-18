@@ -9,6 +9,8 @@ export class ExpenseType {
   readonly name: string;
   @Field(() => Float)
   readonly value: number;
+  @Field(() => ID)
+  readonly budgetId: string;
 }
 
 @ObjectType()
@@ -31,6 +33,6 @@ export class ExpensesResponse {
 export class DeleteExpensesResponse {
   @Field(() => [ErrorType], { nullable: true })
   errors?: ErrorType[];
-  @Field(() => ID, { nullable: true })
-  expenseId?: string;
+  @Field(() => ExpenseType, { nullable: true })
+  expense: ExpenseType;
 }
