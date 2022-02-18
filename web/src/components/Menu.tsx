@@ -6,6 +6,7 @@ import {
   Spacer,
   Button,
   Icon,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { FC } from 'react';
 import { MdLogout } from 'react-icons/md';
@@ -26,6 +27,9 @@ const Menu: FC<MenuProps> = ({ userName, loggedIn }) => {
     navigate('/login', { replace: true });
   };
 
+  const titleColor = useColorModeValue('gray.900', 'white');
+  const usernameColor = useColorModeValue('gray.700', 'gray.300');
+
   return (
     <Flex border="1px" borderColor="gray.500" borderRadius="3xl" p="4">
       <Center>
@@ -39,7 +43,7 @@ const Menu: FC<MenuProps> = ({ userName, loggedIn }) => {
         </Heading>
       </Center>
       <Box p="2">
-        <Heading size="md" color="gray.900">
+        <Heading size="md" color={titleColor}>
           Budget App
         </Heading>
       </Box>
@@ -47,7 +51,7 @@ const Menu: FC<MenuProps> = ({ userName, loggedIn }) => {
       {loggedIn && (
         <>
           <Box p="2">
-            <Heading size="md" color="gray.700">
+            <Heading size="md" color={usernameColor}>
               {userName}
             </Heading>
           </Box>

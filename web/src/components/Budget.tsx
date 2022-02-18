@@ -3,9 +3,11 @@ import {
   Flex,
   Heading,
   Icon,
+  LightMode,
   Progress,
   Spacer,
   useBoolean,
+  useColorModeValue,
 } from '@chakra-ui/react';
 import { FC } from 'react';
 import { MdAddCircle, MdDeleteForever, MdReorder } from 'react-icons/md';
@@ -23,7 +25,10 @@ interface BudgetProps {
 
 function getBudgetColor(maxValue: number, currentValue: number) {
   const colors = ['green', 'yellow', 'orange'];
-  const shades = ['400', '500', '600', '700', '800'];
+  const shades = useColorModeValue(
+    ['400', '500', '600', '700'],
+    ['200', '300', '400', '500'],
+  );
 
   const colorSize = maxValue / colors.length;
   const colorIndex = Math.min(
@@ -42,11 +47,11 @@ function getBudgetColor(maxValue: number, currentValue: number) {
 
   if (currentValue >= maxValue) {
     colorScheme = 'red';
-    colorShade = currentValue > maxValue ? '800' : '600';
+    colorShade = shades.pop()!;
   }
 
   const color = `${colorScheme}.${colorShade}`;
-  return { colorScheme, colorShade, color };
+  return color;
 }
 
 const Budget: FC<BudgetProps> = ({
@@ -59,7 +64,7 @@ const Budget: FC<BudgetProps> = ({
   const [showDeleteConfirm, setShowDeleteConfirm] = useBoolean(false);
   const [showNewExpenseModal, setShowNewExpenseModal] = useBoolean(false);
 
-  const { colorScheme, color } = getBudgetColor(maxValue, currentValue);
+  const color = getBudgetColor(maxValue, currentValue);
   const value = Math.max((currentValue / maxValue) * 100, 1);
 
   async function deleteHandler() {
@@ -90,22 +95,23 @@ const Budget: FC<BudgetProps> = ({
         mt="3"
         borderRadius="lg"
         sx={{
-          backgroundColor: `${colorScheme}.100`,
           '& > div': {
             backgroundColor: color,
           },
         }}
       />
       <Flex mt="3" gap="3" justifyContent="flex-end">
-        <SquareButton colorScheme="red" onClick={setShowDeleteConfirm.on}>
-          <Icon boxSize="1.5em" as={MdDeleteForever} />
-        </SquareButton>
-        <SquareButton colorScheme="teal">
-          <Icon boxSize="1.5em" as={MdReorder} />
-        </SquareButton>
-        <SquareButton colorScheme="green" onClick={setShowNewExpenseModal.on}>
-          <Icon boxSize="1.5em" as={MdAddCircle} />
-        </SquareButton>
+        <LightMode>
+          <SquareButton colorScheme="red" onClick={setShowDeleteConfirm.on}>
+            <Icon boxSize="1.5em" as={MdDeleteForever} />
+          </SquareButton>
+          <SquareButton colorScheme="teal">
+            <Icon boxSize="1.5em" as={MdReorder} />
+          </SquareButton>
+          <SquareButton colorScheme="green" onClick={setShowNewExpenseModal.on}>
+            <Icon boxSize="1.5em" as={MdAddCircle} />
+          </SquareButton>
+        </LightMode>
       </Flex>
 
       <ConfirmAlertBox
