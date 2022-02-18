@@ -101,6 +101,78 @@ const exchanges = [
               return data;
             },
           );
+
+          cache.updateQuery<ExpensesQuery>(
+            {
+              query: ExpensesDocument,
+              variables: {
+                budgetId: expense.budgetId,
+              },
+            },
+            (data) => {
+              const expenseList = data?.expenses.expenses;
+              if (expenseList != null) {
+                return {
+                  expenses: {
+                    ...data?.expenses,
+                    expenses: [...expenseList, expense],
+                  },
+                };
+              }
+
+              return null;
+            },
+          );
+        },
+        deleteExpense(result, args, cache, info) {
+          const expense = result.deleteExpense.expense;
+          if (!expense) return;
+
+          cache.updateQuery<BudgetsQuery>(
+            {
+              query: BudgetsDocument,
+            },
+            (data) => {
+              if (data) {
+                return {
+                  budgets: data.budgets.map((budget) =>
+                    budget.id === expense.budgetId
+                      ? {
+                          ...budget,
+                          currentValue: budget.currentValue - expense.value,
+                        }
+                      : budget,
+                  ),
+                };
+              }
+
+              return data;
+            },
+          );
+
+          cache.updateQuery<ExpensesQuery>(
+            {
+              query: ExpensesDocument,
+              variables: {
+                budgetId: expense.budgetId,
+              },
+            },
+            (data) => {
+              const expenseList = data?.expenses.expenses;
+              if (expenseList?.length) {
+                const newData = {
+                  expenses: {
+                    ...data?.expenses,
+                    expenses: expenseList.filter(({ id }) => id !== expense.id),
+                  },
+                };
+
+                return newData;
+              }
+
+              return data;
+            },
+          );
         },
       },
     },

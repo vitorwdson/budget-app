@@ -47,6 +47,12 @@ type CacheExchangeType = {
         cache: Cache,
         info: ResolveInfo,
       ) => void;
+      deleteExpense: (
+        result: DeleteExpenseMutation,
+        args: Variables,
+        cache: Cache,
+        info: ResolveInfo,
+      ) => void;
     };
   };
 };
