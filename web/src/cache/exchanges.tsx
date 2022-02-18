@@ -6,13 +6,20 @@ import {
   MeDocument,
   BudgetsQuery,
   BudgetsDocument,
+  ExpensesQuery,
+  ExpensesDocument,
 } from '../generated/graphql';
 import CacheExchangeType from './exchangeType';
+import { devtoolsExchange } from '@urql/devtools';
 
 const exchanges = [
+  devtoolsExchange,
   dedupExchange,
   refocusExchange(),
   cacheExchange<CacheExchangeType>({
+    keys: {
+      ExpensesResponse: (data) => null,
+    },
     updates: {
       Mutation: {
         login: (result, args, cache, info) => {
@@ -57,10 +64,10 @@ const exchanges = [
               query: BudgetsDocument,
             },
             (data) => {
-              if (data && result.deleteBudget.budgetId) {
+              if (data && result.deleteBudget.budget) {
                 return {
                   budgets: data.budgets.filter(
-                    (budget) => budget.id !== result.deleteBudget.budgetId,
+                    (budget) => budget.id !== result.deleteBudget.budget?.id,
                   ),
                 };
               }
@@ -81,7 +88,7 @@ const exchanges = [
               if (data) {
                 return {
                   budgets: data.budgets.map((budget) =>
-                    budget.id !== expense.id
+                    budget.id === expense.budgetId
                       ? {
                           ...budget,
                           currentValue: budget.currentValue + expense.value,

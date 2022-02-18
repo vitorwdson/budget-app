@@ -3,6 +3,10 @@ mutation DeleteExpense($expenseId: String!) {
     errors {
       message
     }
-    expenseId
+    expense {
+      id
+      value
+      budgetId
+    }
   }
 }

@@ -3,6 +3,8 @@ mutation DeleteBudget($budgetId: String!) {
     errors {
       message
     }
-    budgetId
+    budget {
+      id
+    }
   }
 }

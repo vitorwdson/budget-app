@@ -3768,6 +3768,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@urql/devtools@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "@urql/devtools@npm:2.0.3"
+  dependencies:
+    wonka: ">= 4.0.9"
+  peerDependencies:
+    "@urql/core": ">= 1.14.0"
+    graphql: ">= 0.11.0"
+  checksum: 9b4a46dd0b6cca5296667bc0e658212c3101cd1c0d01dcc0be736e5b5159beaf6aa982115dd7546ff5425ed91e1688132a82a8f101bf8ad560245b97bb533f59
+  languageName: node
+  linkType: hard
+
 "@urql/exchange-graphcache@npm:^4.3.6":
   version: 4.3.6
   resolution: "@urql/exchange-graphcache@npm:4.3.6"
@@ -15732,6 +15744,7 @@ __metadata:
     "@types/styled-components": ^5.1.22
     "@typescript-eslint/eslint-plugin": latest
     "@typescript-eslint/parser": latest
+    "@urql/devtools": ^2.0.3
     "@urql/exchange-graphcache": ^4.3.6
     "@urql/exchange-refocus": ^0.2.5
     "@vitejs/plugin-react": ^1.0.7
@@ -16025,7 +16038,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"wonka@npm:^4.0.14":
+"wonka@npm:>= 4.0.9, wonka@npm:^4.0.14":
   version: 4.0.15
   resolution: "wonka@npm:4.0.15"
   checksum: afbee7359ed2d0a9146bf682f3953cb093f47d5f827e767e6ef33cb70ca6f30631afe5fe31dbb8d6c7eaed26c4ac6426e7c13568917c017ef6f42c71139b38f7

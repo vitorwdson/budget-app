@@ -8,6 +8,7 @@ query Expenses($budgetId: String!) {
       id
       name
       value
+      budgetId
     }
   }
 }

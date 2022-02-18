@@ -1,13 +1,20 @@
-import { Variables, ResolveInfo, Cache } from '@urql/exchange-graphcache';
+import {
+  Variables,
+  ResolveInfo,
+  Cache,
+  KeyingConfig,
+} from '@urql/exchange-graphcache';
 import {
   LoginMutation,
   RegisterMutation,
   LogoutMutation,
   DeleteBudgetMutation,
   CreateExpenseMutation,
+  DeleteExpenseMutation,
 } from '../generated/graphql';
 
 type CacheExchangeType = {
+  keys?: KeyingConfig;
   updates: {
     Mutation: {
       login: (

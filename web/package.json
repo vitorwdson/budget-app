@@ -42,6 +42,7 @@
     "@types/styled-components": "^5.1.22",
     "@typescript-eslint/eslint-plugin": "latest",
     "@typescript-eslint/parser": "latest",
+    "@urql/devtools": "^2.0.3",
     "@vitejs/plugin-react": "^1.0.7",
     "eslint": "^8.8.0",
     "eslint-config-prettier": "^8.3.0",

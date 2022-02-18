@@ -42,14 +42,14 @@ export type BudgetType = {
 
 export type DeleteBudgetResponse = {
   __typename?: 'DeleteBudgetResponse';
-  budgetId?: Maybe<Scalars['ID']>;
+  budget?: Maybe<BudgetType>;
   errors?: Maybe<Array<ErrorType>>;
 };
 
 export type DeleteExpensesResponse = {
   __typename?: 'DeleteExpensesResponse';
   errors?: Maybe<Array<ErrorType>>;
-  expenseId?: Maybe<Scalars['ID']>;
+  expense?: Maybe<ExpenseType>;
 };
 
 export type ErrorType = {
@@ -72,6 +72,7 @@ export type ExpenseResponse = {
 
 export type ExpenseType = {
   __typename?: 'ExpenseType';
+  budgetId: Scalars['ID'];
   id: Scalars['ID'];
   name: Scalars['String'];
   value: Scalars['Float'];
@@ -198,6 +199,7 @@ export type CreateExpenseMutation = {
       id: string;
       name: string;
       value: number;
+      budgetId: string;
     } | null;
   };
 };
@@ -210,8 +212,8 @@ export type DeleteBudgetMutation = {
   __typename?: 'Mutation';
   deleteBudget: {
     __typename?: 'DeleteBudgetResponse';
-    budgetId?: string | null;
     errors?: Array<{ __typename?: 'ErrorType'; message: string }> | null;
+    budget?: { __typename?: 'BudgetType'; id: string } | null;
   };
 };
 
@@ -223,8 +225,13 @@ export type DeleteExpenseMutation = {
   __typename?: 'Mutation';
   deleteExpense: {
     __typename?: 'DeleteExpensesResponse';
-    expenseId?: string | null;
     errors?: Array<{ __typename?: 'ErrorType'; message: string }> | null;
+    expense?: {
+      __typename?: 'ExpenseType';
+      id: string;
+      value: number;
+      budgetId: string;
+    } | null;
   };
 };
 
@@ -309,6 +316,7 @@ export type ExpensesQuery = {
       id: string;
       name: string;
       value: number;
+      budgetId: string;
     }> | null;
   };
 };
@@ -358,6 +366,7 @@ export const CreateExpenseDocument = gql`
         id
         name
         value
+        budgetId
       }
     }
   }
@@ -375,7 +384,9 @@ export const DeleteBudgetDocument = gql`
       errors {
         message
       }
-      budgetId
+      budget {
+        id
+      }
     }
   }
 `;
@@ -391,7 +402,11 @@ export const DeleteExpenseDocument = gql`
       errors {
         message
       }
-      expenseId
+      expense {
+        id
+        value
+        budgetId
+      }
     }
   }
 `;
@@ -493,6 +508,7 @@ export const ExpensesDocument = gql`
         id
         name
         value
+        budgetId
       }
     }
   }
