@@ -1,5 +1,13 @@
 import { EmailIcon, LockIcon } from '@chakra-ui/icons';
-import { Box, Button, Flex, Heading, Icon, useBoolean } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Flex,
+  Heading,
+  Icon,
+  Spinner,
+  useBoolean,
+} from '@chakra-ui/react';
 import { Form, Formik } from 'formik';
 import { FC, useState } from 'react';
 import FormInput from '../components/FormInput';
@@ -60,41 +68,47 @@ const Login: FC = () => {
             }}
             validationSchema={validationSchema}
           >
-            <Form>
-              <FormInput
-                type="email"
-                placeholder="Email"
-                name="email"
-                inputIcon={<EmailIcon />}
-              />
-              <br />
-              <FormInput
-                type="password"
-                placeholder="Password"
-                name="password"
-                inputIcon={<LockIcon />}
-              />
-              <br />
-              <Flex gap="5">
-                <Button
-                  flex="100%"
-                  colorScheme="teal"
-                  type="button"
-                  leftIcon={<Icon as={MdCreate} />}
-                  onClick={() => navigate('/register')}
-                >
-                  Register
-                </Button>
-                <Button
-                  flex="100%"
-                  colorScheme="green"
-                  type="submit"
-                  leftIcon={<Icon as={MdLogin} />}
-                >
-                  Login
-                </Button>
-              </Flex>
-            </Form>
+            {({ isSubmitting }) => (
+              <Form>
+                <FormInput
+                  type="email"
+                  placeholder="Email"
+                  name="email"
+                  inputIcon={<EmailIcon />}
+                />
+                <br />
+                <FormInput
+                  type="password"
+                  placeholder="Password"
+                  name="password"
+                  inputIcon={<LockIcon />}
+                />
+                <br />
+                <Flex gap="5">
+                  <Button
+                    flex="100%"
+                    colorScheme="teal"
+                    type="button"
+                    leftIcon={<Icon as={MdCreate} />}
+                    onClick={() => navigate('/register')}
+                    disabled={isSubmitting}
+                  >
+                    Register
+                  </Button>
+                  <Button
+                    flex="100%"
+                    colorScheme="green"
+                    type="submit"
+                    leftIcon={
+                      isSubmitting ? <Spinner /> : <Icon as={MdLogin} />
+                    }
+                    disabled={isSubmitting}
+                  >
+                    Login
+                  </Button>
+                </Flex>
+              </Form>
+            )}
           </Formik>
         </Box>
       </Flex>

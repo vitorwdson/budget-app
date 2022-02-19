@@ -1,5 +1,5 @@
 import { EmailIcon, LockIcon } from '@chakra-ui/icons';
-import { Flex, Box, Heading, Button, Icon } from '@chakra-ui/react';
+import { Flex, Box, Heading, Button, Icon, Spinner } from '@chakra-ui/react';
 import { Formik, Form } from 'formik';
 import { FC, FormEvent } from 'react';
 import { MdCreate, MdLogin } from 'react-icons/md';
@@ -79,46 +79,58 @@ const Register: FC = () => {
           }}
           validationSchema={validationSchema}
         >
-          <Form>
-            <Flex gap="3">
+          {({ isSubmitting }) => (
+            <Form>
+              <Flex gap="3">
+                <FormInput
+                  type="text"
+                  placeholder="First Name"
+                  name="firstName"
+                />
+                <FormInput
+                  type="text"
+                  placeholder="Last Name"
+                  name="lastName"
+                />
+              </Flex>
+              <br />
+              <FormInput type="email" placeholder="Email" name="email" />
+              <br />
               <FormInput
-                type="text"
-                placeholder="First Name"
-                name="firstName"
+                type="password"
+                placeholder="Password"
+                name="password"
               />
-              <FormInput type="text" placeholder="Last Name" name="lastName" />
-            </Flex>
-            <br />
-            <FormInput type="email" placeholder="Email" name="email" />
-            <br />
-            <FormInput type="password" placeholder="Password" name="password" />
-            <br />
-            <FormInput
-              type="password"
-              placeholder="Confirm your Password"
-              name="confirmPassword"
-            />
-            <br />
-            <Flex gap="5">
-              <Button
-                flex="100%"
-                colorScheme="teal"
-                type="button"
-                leftIcon={<Icon as={MdLogin} />}
-                onClick={() => navigate('/login')}
-              >
-                Login
-              </Button>
-              <Button
-                flex="100%"
-                colorScheme="green"
-                type="submit"
-                leftIcon={<Icon as={MdCreate} />}
-              >
-                Register
-              </Button>
-            </Flex>
-          </Form>
+              <br />
+              <FormInput
+                type="password"
+                placeholder="Confirm your Password"
+                name="confirmPassword"
+              />
+              <br />
+              <Flex gap="5">
+                <Button
+                  flex="100%"
+                  colorScheme="teal"
+                  type="button"
+                  leftIcon={<Icon as={MdLogin} />}
+                  onClick={() => navigate('/login')}
+                  disabled={isSubmitting}
+                >
+                  Login
+                </Button>
+                <Button
+                  flex="100%"
+                  colorScheme="green"
+                  type="submit"
+                  leftIcon={isSubmitting ? <Spinner /> : <Icon as={MdCreate} />}
+                  disabled={isSubmitting}
+                >
+                  Register
+                </Button>
+              </Flex>
+            </Form>
+          )}
         </Formik>
       </Box>
     </Flex>

@@ -8,6 +8,7 @@ import {
   ModalFooter,
   Button,
   Spacer,
+  Spinner,
 } from '@chakra-ui/react';
 import { Form, Formik } from 'formik';
 import { FC } from 'react';
@@ -66,22 +67,34 @@ const NewBudgetModal: FC<NewBudgetModalProps> = ({ isOpen, hide }) => {
           }}
           validationSchema={validationSchema}
         >
-          <Form>
-            <ModalBody>
-              <FormInput type="text" name="name" label="Name" />
-              <Spacer mt="3" />
-              <FormInput type="number" name="maxValue" label="Max Value" />
-            </ModalBody>
+          {({ isSubmitting }) => (
+            <Form>
+              <ModalBody>
+                <FormInput type="text" name="name" label="Name" />
+                <Spacer mt="3" />
+                <FormInput type="number" name="maxValue" label="Max Value" />
+              </ModalBody>
 
-            <ModalFooter>
-              <Button colorScheme="red" mr={3} onClick={hide}>
-                Close
-              </Button>
-              <Button type="submit" colorScheme="green">
-                Save
-              </Button>
-            </ModalFooter>
-          </Form>
+              <ModalFooter>
+                <Button
+                  colorScheme="red"
+                  mr={3}
+                  onClick={hide}
+                  disabled={isSubmitting}
+                >
+                  Close
+                </Button>
+                <Button
+                  type="submit"
+                  colorScheme="green"
+                  leftIcon={isSubmitting ? <Spinner /> : undefined}
+                  disabled={isSubmitting}
+                >
+                  Save
+                </Button>
+              </ModalFooter>
+            </Form>
+          )}
         </Formik>
       </ModalContent>
     </Modal>
