@@ -58,6 +58,32 @@ const exchanges = [
             'user',
           );
         },
+        createBudget(result, args, cache, info) {
+          cache.updateQuery<BudgetsQuery>(
+            {
+              query: BudgetsDocument,
+            },
+            (data) => {
+              const budget = result.createBudget.budget;
+              if (budget) {
+                const newBudget = { ...budget, currentValue: 0 };
+                let oldBudgets = data?.budgets;
+
+                if (oldBudgets) {
+                  return {
+                    budgets: [...oldBudgets, newBudget],
+                  };
+                }
+
+                return {
+                  budgets: [newBudget],
+                };
+              }
+
+              return null;
+            },
+          );
+        },
         deleteBudget(result, args, cache, info) {
           cache.updateQuery<BudgetsQuery>(
             {
