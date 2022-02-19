@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import Budget from '../components/Budget';
+import Loading from '../components/Loading';
 import NewBudgetButton from '../components/NewBudgetButton';
 import { useBudgetsQuery } from '../generated/graphql';
 
@@ -8,7 +9,7 @@ const Home: FC = () => {
 
   return (
     <>
-      {fetching && <h1>Loading...</h1>}
+      {fetching && <Loading />}
 
       {data?.budgets.map((budget) => (
         <Budget

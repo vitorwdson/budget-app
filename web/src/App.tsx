@@ -10,7 +10,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 
 function App() {
-  const [{ fetching, data }, reRunQuery] = useMeQuery();
+  const [{ fetching, data, stale }, reRunQuery] = useMeQuery();
   const location = useLocation();
 
   useEffect(() => {
@@ -28,7 +28,8 @@ function App() {
             />
           </GridItem>
           <GridItem>
-            {!fetching && (
+            {fetching && <Loading />}
+            {!fetching && !stale && (
               <Routes>
                 <Route
                   path="/"
