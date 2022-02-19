@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import Budget from '../components/Budget';
+import NewBudgetButton from '../components/NewBudgetButton';
 import { useBudgetsQuery } from '../generated/graphql';
 
 const Home: FC = () => {
@@ -18,6 +19,8 @@ const Home: FC = () => {
           currentValue={budget.currentValue}
         />
       ))}
+
+      {!fetching && <NewBudgetButton />}
     </>
   );
 };
