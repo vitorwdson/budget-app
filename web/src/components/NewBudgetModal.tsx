@@ -13,50 +13,46 @@ import { Form, Formik } from 'formik';
 import { FC } from 'react';
 import FormInput from './FormInput';
 import * as yup from 'yup';
-import { useCreateExpenseMutation } from '../generated/graphql';
+import { useCreateBudgetMutation } from '../generated/graphql';
 
-type NewExpenseModalProps = {
-  budgetId: string;
+type NewBudgetModalProps = {
   isOpen: boolean;
   hide: () => void;
 };
 
 type Values = {
   name: string;
-  value: string;
+  maxValue: string;
 };
 
 const validationSchema = yup.object({
   name: yup.string().required('This field is required'),
-  value: yup.string().required('This field is required'),
+  maxValue: yup.string().required('This field is required'),
 });
 
-const NewExpenseModal: FC<NewExpenseModalProps> = ({
-  isOpen,
-  hide,
-  budgetId,
-}) => {
-  const [, createExpense] = useCreateExpenseMutation();
+const NewBudgetModal: FC<NewBudgetModalProps> = ({ isOpen, hide }) => {
+  const [, createBudget] = useCreateBudgetMutation();
 
   return (
     <Modal isOpen={isOpen} onClose={hide} isCentered>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>Create new Expense</ModalHeader>
+        <ModalHeader>Create new Budget</ModalHeader>
         <ModalCloseButton />
 
         <Formik
-          initialValues={{ name: '', value: '' }}
+          initialValues={{ name: '', maxValue: '' }}
           onSubmit={async (values: Values, { setSubmitting, setErrors }) => {
             setSubmitting(true);
-            const result = await createExpense({
-              budgetId,
+            const result = await createBudget({
               name: values.name,
-              value: parseFloat(values.value.replace('$', '').replace(',', '')),
+              maxValue: parseFloat(
+                values.maxValue.replace('$', '').replace(',', ''),
+              ),
             });
             setSubmitting(false);
 
-            const errors = result.data?.createExpense.errors;
+            const errors = result.data?.createBudget.errors;
             if (errors) {
               const formErrors: Record<string, string> = {};
               for (const error of errors) {
@@ -74,7 +70,7 @@ const NewExpenseModal: FC<NewExpenseModalProps> = ({
             <ModalBody>
               <FormInput type="text" name="name" label="Name" />
               <Spacer mt="3" />
-              <FormInput type="number" name="value" label="Value" />
+              <FormInput type="number" name="maxValue" label="Max Value" />
             </ModalBody>
 
             <ModalFooter>
@@ -92,4 +88,4 @@ const NewExpenseModal: FC<NewExpenseModalProps> = ({
   );
 };
 
-export default NewExpenseModal;
+export default NewBudgetModal;
