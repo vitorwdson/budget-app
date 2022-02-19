@@ -15,7 +15,7 @@ type FormInputProps = {
   inputIcon?: ReactNode;
   label?: string;
   placeholder?: string;
-  type: string;
+  type: 'text' | 'password' | 'email' | 'number';
   helperText?: string;
 } & FieldConfig;
 
@@ -38,7 +38,7 @@ const FormInput: FC<FormInputProps> = ({
         {inputIcon && (
           <InputLeftElement pointerEvents="none" children={inputIcon} />
         )}
-        {type === 'text' && (
+        {type !== 'number' && (
           <Input
             id={inputId}
             {...field}
