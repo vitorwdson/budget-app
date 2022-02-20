@@ -16,14 +16,12 @@ import {
   Icon,
   LightMode,
   Skeleton,
+  Spinner,
 } from '@chakra-ui/react';
 import { FC, useEffect, useState } from 'react';
 import { MdDeleteForever } from 'react-icons/md';
 import NumberFormat from 'react-number-format';
-import { DateSchema } from 'yup';
 import {
-  ExpenseResponse,
-  ExpenseType,
   useDeleteExpenseMutation,
   useExpensesQuery,
 } from '../generated/graphql';
@@ -43,6 +41,7 @@ const ExpensesListModal: FC<ExpensesListModalProps> = ({
   hide,
 }) => {
   const dividerColor = useColorModeValue('gray.600', 'gray.400');
+  const [deletingIds, setDeletingIds] = useState<Array<string>>([]);
   const [, deleteExpense] = useDeleteExpenseMutation();
   const [{ data }, getExpenses] = useExpensesQuery({
     variables: { budgetId },
@@ -50,7 +49,9 @@ const ExpensesListModal: FC<ExpensesListModalProps> = ({
   });
 
   async function deleteButtonHandler(expenseId: string) {
+    setDeletingIds((currIds) => [...currIds, expenseId]);
     await deleteExpense({ expenseId });
+    setDeletingIds((currIds) => currIds.filter((id) => id !== expenseId));
   }
 
   useEffect(() => {
@@ -96,8 +97,13 @@ const ExpensesListModal: FC<ExpensesListModalProps> = ({
                     h="1.5em"
                     colorScheme="red"
                     onClick={() => deleteButtonHandler(expense.id)}
+                    disabled={deletingIds.includes(expense.id)}
                   >
-                    <Icon boxSize="1em" as={MdDeleteForever} />
+                    {deletingIds.includes(expense.id) ? (
+                      <Spinner sx={{ '--spinner-size': '1rem' }} />
+                    ) : (
+                      <Icon boxSize="1em" as={MdDeleteForever} />
+                    )}
                   </SquareButton>
                 </LightMode>
               </Flex>

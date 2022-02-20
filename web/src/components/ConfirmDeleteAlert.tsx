@@ -6,12 +6,13 @@ import {
   AlertDialogHeader,
   AlertDialogOverlay,
   Button,
+  Spinner,
 } from '@chakra-ui/react';
-import { FC, useRef } from 'react';
+import { FC, useRef, useState } from 'react';
 
 type ConfirmDeleteAlertProps = {
   isOpen: boolean;
-  onDelete: () => void;
+  onDelete: () => Promise<void>;
   hide: () => void;
 };
 
@@ -20,11 +21,14 @@ const ConfirmDeleteAlert: FC<ConfirmDeleteAlertProps> = ({
   hide,
   onDelete,
 }) => {
+  const [isDeleting, setIsDeleting] = useState(false);
   const cancelRef = useRef(null);
 
-  function deleteButtonHandler() {
+  async function deleteButtonHandler() {
+    setIsDeleting(true);
+    await onDelete();
+    setIsDeleting(false);
     hide();
-    onDelete();
   }
 
   return (
@@ -45,10 +49,16 @@ const ConfirmDeleteAlert: FC<ConfirmDeleteAlertProps> = ({
           </AlertDialogBody>
 
           <AlertDialogFooter>
-            <Button ref={cancelRef} onClick={hide}>
+            <Button ref={cancelRef} onClick={hide} disabled={isDeleting}>
               Cancel
             </Button>
-            <Button colorScheme="red" onClick={deleteButtonHandler} ml={3}>
+            <Button
+              colorScheme="red"
+              onClick={deleteButtonHandler}
+              ml={3}
+              leftIcon={isDeleting ? <Spinner /> : undefined}
+              disabled={isDeleting}
+            >
               Delete
             </Button>
           </AlertDialogFooter>
