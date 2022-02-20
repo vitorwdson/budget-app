@@ -6,6 +6,8 @@
   ],
   "scripts": {
     "build": "yarn workspaces foreach run build",
+    "build:web": "yarn workspace @budget-app/web run build",
+    "build:server": "yarn workspace @budget-app/server run build",
     "dev:web": "yarn workspace @budget-app/web run dev",
     "dev:server": "yarn workspace @budget-app/server run start:dev"
   },
