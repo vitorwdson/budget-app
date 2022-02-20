@@ -1524,6 +1524,7 @@ __metadata:
     "@types/supertest": ^2.0.11
     "@typescript-eslint/eslint-plugin": ^4.29.2
     "@typescript-eslint/parser": ^4.29.2
+    "@vercel/node": ^1.13.0
     apollo-server-core: ^3.6.1
     apollo-server-express: ^3.6.1
     bcrypt: ^5.0.1
@@ -5057,6 +5058,17 @@ __metadata:
   peerDependencies:
     graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
   checksum: d4380676bedb40dfad32bdb354dd5faec6bc79bb279596a6be7de59ef3725e9abc65a9fde6bc5e4e3db97a33806aed662a42b3095950627375059cbd339a8d39
+  languageName: node
+  linkType: hard
+
+"@vercel/node@npm:^1.13.0":
+  version: 1.13.0
+  resolution: "@vercel/node@npm:1.13.0"
+  dependencies:
+    "@types/node": "*"
+    ts-node: 8.9.1
+    typescript: 4.3.4
+  checksum: 54ee2f1b51f658d241b049e5c698d8fb1f70f9740bbbb0e4f83c44c11f5538eabcfdde767f6b1b2311a31c8242b1e1904bf2a2800f258c98faf013bad4425fe0
   languageName: node
   linkType: hard
 
@@ -18596,6 +18608,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ts-node@npm:8.9.1":
+  version: 8.9.1
+  resolution: "ts-node@npm:8.9.1"
+  dependencies:
+    arg: ^4.1.0
+    diff: ^4.0.1
+    make-error: ^1.1.1
+    source-map-support: ^0.5.17
+    yn: 3.1.1
+  peerDependencies:
+    typescript: ">=2.7"
+  bin:
+    ts-node: dist/bin.js
+    ts-node-script: dist/bin-script.js
+    ts-node-transpile-only: dist/bin-transpile.js
+    ts-script: dist/bin-script-deprecated.js
+  checksum: 59997e32cfb84323317f9fd33ff62d025b467ff36c296c3ad1ee54f08fd355c58fab37e096e2a63fd01fced929384b16b9d74bf324713a21844e527ddd5f6c17
+  languageName: node
+  linkType: hard
+
 "ts-node@npm:^10.3.0":
   version: 10.5.0
   resolution: "ts-node@npm:10.5.0"
@@ -18837,6 +18869,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript@npm:4.3.4":
+  version: 4.3.4
+  resolution: "typescript@npm:4.3.4"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 75e1f2769c7ff38c718523d05eaf1c2611dbf92c0ab0f85f603ead9bb23416af2009a5dac46e76ef6a207a8508fa53f51b43a41f2a91b1241b53cd744c16128c
+  languageName: node
+  linkType: hard
+
 "typescript@npm:4.5.5, typescript@npm:^4.5.5":
   version: 4.5.5
   resolution: "typescript@npm:4.5.5"
@@ -18844,6 +18886,16 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 506f4c919dc8aeaafa92068c997f1d213b9df4d9756d0fae1a1e7ab66b585ab3498050e236113a1c9e57ee08c21ec6814ca7a7f61378c058d79af50a4b1f5a5e
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@4.3.4#~builtin<compat/typescript>":
+  version: 4.3.4
+  resolution: "typescript@patch:typescript@npm%3A4.3.4#~builtin<compat/typescript>::version=4.3.4&hash=493e53"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 49f3e6734d6f27c1931d3a665439350d9015b28eee87ba26ebcae0ba35fc609962ad8eb0b09f0324366497d65260c4222b8735098325bba46d508b5cab7b4640
   languageName: node
   linkType: hard
 

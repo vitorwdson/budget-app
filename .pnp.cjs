@@ -2801,6 +2801,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/supertest", "npm:2.0.11"],
             ["@typescript-eslint/eslint-plugin", "virtual:a9d79f65ce5a90a5c211f5dd9dc7dec640aea39aa1dd79021e3e76388331b50d81a9ac8f182505a3db45febd316b908405df0b65d5a11cb0be656412a76e9fc3#npm:4.33.0"],
             ["@typescript-eslint/parser", "virtual:a9d79f65ce5a90a5c211f5dd9dc7dec640aea39aa1dd79021e3e76388331b50d81a9ac8f182505a3db45febd316b908405df0b65d5a11cb0be656412a76e9fc3#npm:4.33.0"],
+            ["@vercel/node", "npm:1.13.0"],
             ["apollo-server-core", "virtual:a9d79f65ce5a90a5c211f5dd9dc7dec640aea39aa1dd79021e3e76388331b50d81a9ac8f182505a3db45febd316b908405df0b65d5a11cb0be656412a76e9fc3#npm:3.6.3"],
             ["apollo-server-express", "virtual:a9d79f65ce5a90a5c211f5dd9dc7dec640aea39aa1dd79021e3e76388331b50d81a9ac8f182505a3db45febd316b908405df0b65d5a11cb0be656412a76e9fc3#npm:3.6.3"],
             ["bcrypt", "npm:5.0.1"],
@@ -8278,6 +8279,18 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packagePeers": [
             "@types/graphql",
             "graphql"
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@vercel/node", [
+        ["npm:1.13.0", {
+          "packageLocation": "./.yarn/cache/@vercel-node-npm-1.13.0-ca6de464e7-54ee2f1b51.zip/node_modules/@vercel/node/",
+          "packageDependencies": [
+            ["@vercel/node", "npm:1.13.0"],
+            ["@types/node", "npm:17.0.18"],
+            ["ts-node", "virtual:ca6de464e7f4ece741e6037f19a0a0335f8c39872ded729f094771371cb1dcae28754abc81eda14480206d0374f67f19019e709af0f8d318d787aae8c5c73a8c#npm:8.9.1"],
+            ["typescript", "patch:typescript@npm%3A4.3.4#~builtin<compat/typescript>::version=4.3.4&hash=493e53"]
           ],
           "linkType": "HARD",
         }]
@@ -23895,6 +23908,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "SOFT",
         }],
+        ["npm:8.9.1", {
+          "packageLocation": "./.yarn/cache/ts-node-npm-8.9.1-aebcfc876f-59997e32cf.zip/node_modules/ts-node/",
+          "packageDependencies": [
+            ["ts-node", "npm:8.9.1"]
+          ],
+          "linkType": "SOFT",
+        }],
         ["npm:9.1.1", {
           "packageLocation": "./.yarn/cache/ts-node-npm-9.1.1-4ad31da228-356e2647b8.zip/node_modules/ts-node/",
           "packageDependencies": [
@@ -23952,6 +23972,24 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             "@types/node",
             "@types/swc__core",
             "@types/swc__wasm",
+            "@types/typescript",
+            "typescript"
+          ],
+          "linkType": "HARD",
+        }],
+        ["virtual:ca6de464e7f4ece741e6037f19a0a0335f8c39872ded729f094771371cb1dcae28754abc81eda14480206d0374f67f19019e709af0f8d318d787aae8c5c73a8c#npm:8.9.1", {
+          "packageLocation": "./.yarn/__virtual__/ts-node-virtual-0e9e3d4ee2/0/cache/ts-node-npm-8.9.1-aebcfc876f-59997e32cf.zip/node_modules/ts-node/",
+          "packageDependencies": [
+            ["ts-node", "virtual:ca6de464e7f4ece741e6037f19a0a0335f8c39872ded729f094771371cb1dcae28754abc81eda14480206d0374f67f19019e709af0f8d318d787aae8c5c73a8c#npm:8.9.1"],
+            ["@types/typescript", null],
+            ["arg", "npm:4.1.3"],
+            ["diff", "npm:4.0.2"],
+            ["make-error", "npm:1.3.6"],
+            ["source-map-support", "npm:0.5.21"],
+            ["typescript", "patch:typescript@npm%3A4.3.4#~builtin<compat/typescript>::version=4.3.4&hash=493e53"],
+            ["yn", "npm:3.1.1"]
+          ],
+          "packagePeers": [
             "@types/typescript",
             "typescript"
           ],
@@ -24225,6 +24263,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["typescript", [
+        ["patch:typescript@npm%3A4.3.4#~builtin<compat/typescript>::version=4.3.4&hash=493e53", {
+          "packageLocation": "./.yarn/cache/typescript-patch-0e01797397-49f3e6734d.zip/node_modules/typescript/",
+          "packageDependencies": [
+            ["typescript", "patch:typescript@npm%3A4.3.4#~builtin<compat/typescript>::version=4.3.4&hash=493e53"]
+          ],
+          "linkType": "HARD",
+        }],
         ["patch:typescript@npm%3A4.5.5#~builtin<compat/typescript>::version=4.5.5&hash=493e53", {
           "packageLocation": "./.yarn/cache/typescript-patch-3020d8933d-c05c318d79.zip/node_modules/typescript/",
           "packageDependencies": [
