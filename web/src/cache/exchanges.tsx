@@ -55,7 +55,7 @@ const exchanges = [
             {
               __typename: 'Query',
             },
-            'user',
+            'me',
           );
         },
         createBudget(result, args, cache, info) {
