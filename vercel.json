@@ -1,16 +1,15 @@
 {
   "version": 2,
-  "name": "budget-app-server",
   "builds": [
     {
-      "src": "dist/main.js",
+      "src": "packages/server/dist/main.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "dist/main.js"
+      "dest": "packages/server/dist/main.js"
     }
   ]
 }
