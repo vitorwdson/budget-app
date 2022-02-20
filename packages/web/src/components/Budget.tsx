@@ -48,7 +48,7 @@ function getBudgetColor(maxValue: number, currentValue: number) {
 
   if (currentValue >= maxValue) {
     colorScheme = 'red';
-    colorShade = shades.pop()!;
+    colorShade = shades[shades.length - 1];
   }
 
   const color = `${colorScheme}.${colorShade}`;

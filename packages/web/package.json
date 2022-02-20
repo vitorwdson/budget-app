@@ -44,11 +44,11 @@
     "@typescript-eslint/parser": "latest",
     "@urql/devtools": "^2.0.3",
     "@vitejs/plugin-react": "^1.0.7",
-    "eslint": "^8.8.0",
+    "eslint": "^8.9.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-react": "latest",
-    "prettier": "2.5.1",
-    "typescript": "^4.4.4",
+    "prettier": "^2.5.1",
+    "typescript": "^4.5.5",
     "vite": "^2.7.2"
   }
 }

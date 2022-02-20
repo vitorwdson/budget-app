@@ -8,7 +8,6 @@
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:react/jsx-runtime",
-    "some-other-config-you-use",
     "prettier"
   ],
   "parser": "@typescript-eslint/parser",
@@ -22,7 +21,7 @@
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "indent": ["error", 2],
-    "linebreak-style": ["error", "windows"],
+    "linebreak-style": ["error", "unix"],
     "quotes": ["error", "single"],
     "semi": ["error", "always"]
   }
