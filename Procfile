@@ -1,1 +1,1 @@
-web: yarn build:server && node packages/server/dist/main.js
+web: node packages/server/dist/main.js
