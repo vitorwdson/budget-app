@@ -2838,6 +2838,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@budget-app/web", "workspace:packages/web"],
             ["@chakra-ui/icons", "virtual:111133f38056e4ebc371111ecfb2cc2bb07cf239674e949fbb3b510d68bb0fdca96fe16b59bc11432c92bc2f414a457f834f6bbf8f61ed0937015220e3dbec3e#npm:1.1.7"],
             ["@chakra-ui/react", "virtual:111133f38056e4ebc371111ecfb2cc2bb07cf239674e949fbb3b510d68bb0fdca96fe16b59bc11432c92bc2f414a457f834f6bbf8f61ed0937015220e3dbec3e#npm:1.8.5"],
+            ["@chakra-ui/styled-system", "npm:1.18.1"],
             ["@chakra-ui/system", "virtual:111133f38056e4ebc371111ecfb2cc2bb07cf239674e949fbb3b510d68bb0fdca96fe16b59bc11432c92bc2f414a457f834f6bbf8f61ed0937015220e3dbec3e#npm:1.11.1"],
             ["@chakra-ui/utils", "npm:1.10.4"],
             ["@emotion/react", "virtual:111133f38056e4ebc371111ecfb2cc2bb07cf239674e949fbb3b510d68bb0fdca96fe16b59bc11432c92bc2f414a457f834f6bbf8f61ed0937015220e3dbec3e#npm:11.8.1"],
@@ -2851,10 +2852,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/styled-components", "npm:5.1.23"],
             ["@typescript-eslint/eslint-plugin", "virtual:111133f38056e4ebc371111ecfb2cc2bb07cf239674e949fbb3b510d68bb0fdca96fe16b59bc11432c92bc2f414a457f834f6bbf8f61ed0937015220e3dbec3e#npm:5.12.0"],
             ["@typescript-eslint/parser", "virtual:111133f38056e4ebc371111ecfb2cc2bb07cf239674e949fbb3b510d68bb0fdca96fe16b59bc11432c92bc2f414a457f834f6bbf8f61ed0937015220e3dbec3e#npm:5.12.0"],
-            ["@urql/devtools", "virtual:111133f38056e4ebc371111ecfb2cc2bb07cf239674e949fbb3b510d68bb0fdca96fe16b59bc11432c92bc2f414a457f834f6bbf8f61ed0937015220e3dbec3e#npm:2.0.3"],
             ["@urql/exchange-graphcache", "virtual:111133f38056e4ebc371111ecfb2cc2bb07cf239674e949fbb3b510d68bb0fdca96fe16b59bc11432c92bc2f414a457f834f6bbf8f61ed0937015220e3dbec3e#npm:4.3.6"],
             ["@urql/exchange-refocus", "virtual:111133f38056e4ebc371111ecfb2cc2bb07cf239674e949fbb3b510d68bb0fdca96fe16b59bc11432c92bc2f414a457f834f6bbf8f61ed0937015220e3dbec3e#npm:0.2.5"],
             ["@vitejs/plugin-react", "npm:1.2.0"],
+            ["csstype", "npm:3.0.10"],
             ["eslint", "npm:8.9.0"],
             ["eslint-config-prettier", "virtual:a9d79f65ce5a90a5c211f5dd9dc7dec640aea39aa1dd79021e3e76388331b50d81a9ac8f182505a3db45febd316b908405df0b65d5a11cb0be656412a76e9fc3#npm:8.4.0"],
             ["eslint-plugin-react", "virtual:111133f38056e4ebc371111ecfb2cc2bb07cf239674e949fbb3b510d68bb0fdca96fe16b59bc11432c92bc2f414a457f834f6bbf8f61ed0937015220e3dbec3e#npm:7.28.0"],
@@ -8228,33 +8229,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "packagePeers": [
             "@types/graphql",
-            "graphql"
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["@urql/devtools", [
-        ["npm:2.0.3", {
-          "packageLocation": "./.yarn/cache/@urql-devtools-npm-2.0.3-e29fae5136-9b4a46dd0b.zip/node_modules/@urql/devtools/",
-          "packageDependencies": [
-            ["@urql/devtools", "npm:2.0.3"]
-          ],
-          "linkType": "SOFT",
-        }],
-        ["virtual:111133f38056e4ebc371111ecfb2cc2bb07cf239674e949fbb3b510d68bb0fdca96fe16b59bc11432c92bc2f414a457f834f6bbf8f61ed0937015220e3dbec3e#npm:2.0.3", {
-          "packageLocation": "./.yarn/__virtual__/@urql-devtools-virtual-a4b59ef32c/0/cache/@urql-devtools-npm-2.0.3-e29fae5136-9b4a46dd0b.zip/node_modules/@urql/devtools/",
-          "packageDependencies": [
-            ["@urql/devtools", "virtual:111133f38056e4ebc371111ecfb2cc2bb07cf239674e949fbb3b510d68bb0fdca96fe16b59bc11432c92bc2f414a457f834f6bbf8f61ed0937015220e3dbec3e#npm:2.0.3"],
-            ["@types/graphql", null],
-            ["@types/urql__core", null],
-            ["@urql/core", null],
-            ["graphql", "npm:16.3.0"],
-            ["wonka", "npm:4.0.15"]
-          ],
-          "packagePeers": [
-            "@types/graphql",
-            "@types/urql__core",
-            "@urql/core",
             "graphql"
           ],
           "linkType": "HARD",

@@ -10,10 +10,8 @@ import {
   ExpensesDocument,
 } from '../generated/graphql';
 import CacheExchangeType from './exchangeType';
-import { devtoolsExchange } from '@urql/devtools';
 
 const exchanges = [
-  devtoolsExchange,
   dedupExchange,
   refocusExchange(),
   cacheExchange<CacheExchangeType>({
@@ -67,7 +65,7 @@ const exchanges = [
               const budget = result.createBudget.budget;
               if (budget) {
                 const newBudget = { ...budget, currentValue: 0 };
-                let oldBudgets = data?.budgets;
+                const oldBudgets = data?.budgets;
 
                 if (oldBudgets) {
                   return {

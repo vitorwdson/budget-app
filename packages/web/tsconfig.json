@@ -14,7 +14,18 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "csstype": [
+        "../../.yarn/cache/csstype-npm-3.0.10-e26ef49bb2-20a8fa324f.zip/node_modules/csstype"
+      ],
+      "@chakra-ui/styled-system": [
+        "../../.yarn/cache/@chakra-ui-styled-system-npm-1.18.1-03a06ef639-7de82219a3.zip/node_modules/@chakra-ui/styled-system"
+      ],
+      "@popperjs/core": [
+        "../../.yarn/cache/@popperjs-core-npm-2.11.2-5358ac2a25-5695bf020e.zip/node_modules/@popperjs/core"
+      ]
+    }
   },
   "include": ["./src"]
 }

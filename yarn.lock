@@ -1559,6 +1559,7 @@ __metadata:
   dependencies:
     "@chakra-ui/icons": ^1.1.5
     "@chakra-ui/react": ^1.8.3
+    "@chakra-ui/styled-system": ^1.18.1
     "@chakra-ui/system": ^1.10.3
     "@chakra-ui/utils": ^1.10.2
     "@emotion/react": ^11
@@ -1572,10 +1573,10 @@ __metadata:
     "@types/styled-components": ^5.1.22
     "@typescript-eslint/eslint-plugin": latest
     "@typescript-eslint/parser": latest
-    "@urql/devtools": ^2.0.3
     "@urql/exchange-graphcache": ^4.3.6
     "@urql/exchange-refocus": ^0.2.5
     "@vitejs/plugin-react": ^1.0.7
+    csstype: ^3.0.10
     eslint: ^8.9.0
     eslint-config-prettier: ^8.3.0
     eslint-plugin-react: latest
@@ -2249,7 +2250,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@chakra-ui/styled-system@npm:1.18.1":
+"@chakra-ui/styled-system@npm:1.18.1, @chakra-ui/styled-system@npm:^1.18.1":
   version: 1.18.1
   resolution: "@chakra-ui/styled-system@npm:1.18.1"
   dependencies:
@@ -5032,18 +5033,6 @@ __metadata:
   peerDependencies:
     graphql: ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0
   checksum: c94d57a92519ad8c6c0973c59a5e8a9b4d7425f0d54f5a55bd311877471448a54ea3cd31893266fc79918d66cdee008d9d32297a0fbfb7163328df54fc1daf8d
-  languageName: node
-  linkType: hard
-
-"@urql/devtools@npm:^2.0.3":
-  version: 2.0.3
-  resolution: "@urql/devtools@npm:2.0.3"
-  dependencies:
-    wonka: ">= 4.0.9"
-  peerDependencies:
-    "@urql/core": ">= 1.14.0"
-    graphql: ">= 0.11.0"
-  checksum: 9b4a46dd0b6cca5296667bc0e658212c3101cd1c0d01dcc0be736e5b5159beaf6aa982115dd7546ff5425ed91e1688132a82a8f101bf8ad560245b97bb533f59
   languageName: node
   linkType: hard
 
@@ -8171,7 +8160,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"csstype@npm:^3.0.2, csstype@npm:^3.0.9":
+"csstype@npm:^3.0.10, csstype@npm:^3.0.2, csstype@npm:^3.0.9":
   version: 3.0.10
   resolution: "csstype@npm:3.0.10"
   checksum: 20a8fa324f2b33ddf94aa7507d1b6ab3daa6f3cc308888dc50126585d7952f2471de69b2dbe0635d1fdc31223fef8e070842691877e725caf456e2378685a631
@@ -19818,7 +19807,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"wonka@npm:>= 4.0.9, wonka@npm:^4.0.14":
+"wonka@npm:^4.0.14":
   version: 4.0.15
   resolution: "wonka@npm:4.0.15"
   checksum: afbee7359ed2d0a9146bf682f3953cb093f47d5f827e767e6ef33cb70ca6f30631afe5fe31dbb8d6c7eaed26c4ac6426e7c13568917c017ef6f42c71139b38f7
