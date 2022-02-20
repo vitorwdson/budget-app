@@ -9,7 +9,7 @@ import { BrowserRouter } from 'react-router-dom';
 import exchanges from './cache/exchanges';
 
 const client = createClient({
-  url: 'http://localhost:4000/graphql',
+  url: import.meta.env.VITE_BACKEND_URL,
   fetchOptions: {
     credentials: 'include',
   },
