@@ -1,1 +1,0 @@
-web: yarn prepare:server && yarn node packages/server/dist/main.js
