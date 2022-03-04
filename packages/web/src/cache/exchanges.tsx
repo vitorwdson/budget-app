@@ -33,6 +33,18 @@ const exchanges = [
               return data;
             },
           );
+          cache.invalidate(
+            {
+              __typename: 'Query',
+            },
+            'budgets',
+          );
+          cache.invalidate(
+            {
+              __typename: 'Query',
+            },
+            'expenses',
+          );
         },
         register: (result, args, cache, info) => {
           cache.updateQuery<MeQuery>(
@@ -47,6 +59,18 @@ const exchanges = [
               return data;
             },
           );
+          cache.invalidate(
+            {
+              __typename: 'Query',
+            },
+            'budgets',
+          );
+          cache.invalidate(
+            {
+              __typename: 'Query',
+            },
+            'expenses',
+          );
         },
         logout: (result, args, cache, info) => {
           cache.invalidate(
@@ -54,6 +78,18 @@ const exchanges = [
               __typename: 'Query',
             },
             'me',
+          );
+          cache.invalidate(
+            {
+              __typename: 'Query',
+            },
+            'budgets',
+          );
+          cache.invalidate(
+            {
+              __typename: 'Query',
+            },
+            'expenses',
           );
         },
         createBudget(result, args, cache, info) {
