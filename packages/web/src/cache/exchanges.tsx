@@ -16,11 +16,11 @@ const exchanges = [
   refocusExchange(),
   cacheExchange<CacheExchangeType>({
     keys: {
-      ExpensesResponse: (data) => null,
+      ExpensesResponse: () => null,
     },
     updates: {
       Mutation: {
-        login: (result, args, cache, info) => {
+        login: (result, args, cache) => {
           cache.updateQuery<MeQuery>(
             {
               query: MeDocument,
@@ -46,7 +46,7 @@ const exchanges = [
             'expenses',
           );
         },
-        register: (result, args, cache, info) => {
+        register: (result, args, cache) => {
           cache.updateQuery<MeQuery>(
             {
               query: MeDocument,
@@ -72,7 +72,7 @@ const exchanges = [
             'expenses',
           );
         },
-        logout: (result, args, cache, info) => {
+        logout: (result, args, cache) => {
           cache.invalidate(
             {
               __typename: 'Query',
@@ -92,7 +92,7 @@ const exchanges = [
             'expenses',
           );
         },
-        createBudget(result, args, cache, info) {
+        createBudget(result, args, cache) {
           cache.updateQuery<BudgetsQuery>(
             {
               query: BudgetsDocument,
@@ -118,7 +118,7 @@ const exchanges = [
             },
           );
         },
-        deleteBudget(result, args, cache, info) {
+        deleteBudget(result, args, cache) {
           cache.updateQuery<BudgetsQuery>(
             {
               query: BudgetsDocument,
@@ -136,7 +136,7 @@ const exchanges = [
             },
           );
         },
-        createExpense(result, args, cache, info) {
+        createExpense(result, args, cache) {
           const expense = result.createExpense.expense;
           if (!expense) return;
 
@@ -184,7 +184,7 @@ const exchanges = [
             },
           );
         },
-        deleteExpense(result, args, cache, info) {
+        deleteExpense(result, args, cache) {
           const expense = result.deleteExpense.expense;
           if (!expense) return;
 
