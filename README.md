@@ -9,7 +9,7 @@
 
 ## How to access
 
-You can access the app using [this link](https://budget-app.vitorwdson.me/).  
+You can access the app using [this link](https://budget-app.vitorwdson.dev/).  
 Note: In case you don't want to create a new account to test the app, you can login with the test account:
 
 - Email: `test@email.com`
